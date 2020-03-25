@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_25_092422) do
+ActiveRecord::Schema.define(version: 2020_03_25_121548) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "location"
@@ -23,10 +23,32 @@ ActiveRecord::Schema.define(version: 2020_03_25_092422) do
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
+  create_table "bills", force: :cascade do |t|
+    t.integer "request_id", null: false
+    t.string "method"
+    t.float "tax"
+    t.float "amount"
+    t.float "provider_charge"
+    t.float "total"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["request_id"], name: "index_bills_on_request_id"
+  end
+
   create_table "categories", force: :cascade do |t|
     t.string "category_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "provider_requests", force: :cascade do |t|
+    t.string "status"
+    t.integer "provider_id", null: false
+    t.integer "request_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["provider_id"], name: "index_provider_requests_on_provider_id"
+    t.index ["request_id"], name: "index_provider_requests_on_request_id"
   end
 
   create_table "provider_skills", force: :cascade do |t|
@@ -104,6 +126,9 @@ ActiveRecord::Schema.define(version: 2020_03_25_092422) do
   end
 
   add_foreign_key "addresses", "users"
+  add_foreign_key "bills", "requests"
+  add_foreign_key "provider_requests", "providers"
+  add_foreign_key "provider_requests", "requests"
   add_foreign_key "provider_skills", "providers"
   add_foreign_key "provider_skills", "skills"
   add_foreign_key "requests", "providers"
