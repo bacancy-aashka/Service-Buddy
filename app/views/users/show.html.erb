@@ -1,0 +1,36 @@
+  <h2><%= @user.firstname %>'s Profile </h2>
+  <hr>
+  
+  <p>
+    <strong>First Name: </strong>
+    <%= @user.firstname %>
+  </p>
+  
+  <p>
+    <strong>Last Name: </strong>
+    <%= @user.lastname %>
+  </p>
+  
+  <p>
+    <strong>Contact no: </strong>
+    <%= @user.contact %>
+  </p>
+  
+  <p>
+    <% if @user.addresses.present? %>
+      <h5><b>Your Addresses :</b></h5><hr>
+      <% @user.addresses.each_with_index do |address, index| %>
+        <%= "#{index+1} :-  #{address.location}, #{address.city}, #{address.state}, #{address.zipcode} " %>&nbsp&nbsp&nbsp&nbsp&nbsp
+        <%= link_to 'Edit', edit_address_path(address) %>
+        <%= button_to 'Remove Address', address_path(address), method: :delete, data: { confirm: 'Are you sure?' } %><br>
+      <% end %>
+    <% else %>
+      <h5>No address added yet !</h5>
+    <% end %> 
+  </p>
+  <br>
+  <hr>
+
+<%= link_to 'Back', '/', class: "btn btn-secondary sm-btn" %>
+
+

@@ -1,6 +1,9 @@
 <% if user_signed_in? %>
 <h1>All Users</h1>
 
+<%= link_to "Book Here", new_address_path, style: 'float: right; margin: 10px', class: 'btn btn-danger sm-btn' %>
+<br><br>
+
 <table class="table">
   <thead class="thead-dark">
     <tr>
