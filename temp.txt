@@ -1,0 +1,24 @@
+<p>
+    <strong>City: </strong>
+    <%= @user.providers.provider_detail.city %>
+  </p>
+  
+  <p>
+    <strong>State: </strong>
+    <%= @user.providers.provider_detail.state %>
+  </p>
+  
+  <p>
+    <strong>Pin Code: </strong>
+    <%= @user.providers.provider_detail.zipcode %>
+  </p>
+
+  <p>
+    <strong>About: </strong>
+    <%= @user.providers.provider_details.category.name %>
+  </p>
+  
+  <p>
+    <strong>About: </strong>
+    <%= @user.providers.provider_detail.description %>
+  </p>

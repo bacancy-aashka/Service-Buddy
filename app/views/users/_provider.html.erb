@@ -1,0 +1,31 @@
+<%= @user.providers.each do |provider| %>
+    <p>
+      <strong>City: </strong>
+      <%= provider.provider_detail.city %>
+    </p>
+    
+    <p>
+      <strong>State: </strong>
+      <%= provider.provider_detail.state %>
+    </p>
+    
+    <p>
+      <strong>Pin Code: </strong>
+      <%= provider.provider_detail.zipcode %>
+    </p>
+
+    <p>
+      <strong>About: </strong>
+      <%= provider.provider_detail.category.name %>
+    </p>
+    
+    <p>
+      <strong>About: </strong>
+      <%= provider.provider_detail.description %>
+    </p>
+
+    <%= link_to 'Edit', edit_provider_detail_path(provider), class: "btn btn-warning sm-btn" %>
+    <%= button_to 'Remove Address', provider_detail_path(provider), method: :delete, class: "btn btn-danger sm-btn" %>
+    
+    <hr>
+<% end %>
