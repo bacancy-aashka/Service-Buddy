@@ -1,7 +1,7 @@
 class ProviderDetailsController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :set_provider_details, only: %i[edit update destroy]
+  before_action :set_provider_details, only: %i[edit update]
   before_action :check_provider, only: %i[edit]
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_provider_details
 
@@ -39,8 +39,7 @@ class ProviderDetailsController < ApplicationController
   end
   
   def destroy
-    @provider_detail.destroy
-    Provider.find(@provider_detail_id).destroy
+    Provider.find(params[:id]).destroy
     redirect_to user_path(current_user), notice: 'your address was successfully destroyed.' 
   end
 
@@ -48,7 +47,6 @@ class ProviderDetailsController < ApplicationController
 
   def set_provider_details
     @provider_detail = ProviderDetail.find(params[:id])
-    @provider_detail_id = @provider_detail.provider_id
   end
 
   def check_provider
@@ -58,8 +56,7 @@ class ProviderDetailsController < ApplicationController
   end
   
   def invalid_provider_details
-    # logger.error "Attempt to access invalid cart #{params[:id]}"
-    redirect_to '/', notice: "Invalid provider details"
+    redirect_to '/'
   end
 
   def provider_detail_params
