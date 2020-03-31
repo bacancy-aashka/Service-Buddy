@@ -1,34 +1,44 @@
-<% if user_signed_in? %>
-<h1>All Users</h1>
 
-<%= link_to "Register as a Provider Here", user_path(current_user), method: :get, style: 'float: right; margin: 10px', class: 'btn btn-danger sm-btn' %>
-<br><br>
+      <% if user_signed_in? %>
+      <h1>All Users</h1>
 
-<table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th>User ID</th>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Email</th>
-      <th>Phone No</th>
-      <th>D.O.F.</th>
-    </tr>
-  </thead>
+      <%= link_to "Register as a Provider Here", user_path(current_user), method: :get, style: 'float: right; margin: 10px', class: 'btn btn-danger sm-btn' %>
+      <br><br>
+      
 
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.id %></td>
-        <td><%= user.firstname %></td>
-        <td><%= user.lastname %></td>
-        <td><%= user.email %></td>
-        <td><%= user.contact %></td>
-        <td><%= user.dob.strftime('%v') %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <div class= "row">
+    <div class="col-md-8">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th>User ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Phone No</th>
+            <th>D.O.F.</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td><%= user.id %></td>
+              <td><%= user.firstname %></td>
+              <td><%= user.lastname %></td>
+              <td><%= user.email %></td>
+              <td><%= user.contact %></td>
+              <td><%= user.dob.strftime('%v') %></td>
+              <td><%= link_to "Contact",msg_path, remote: true %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-4" id="msg_box">
+    </div>
+  </div>
+
 
 <% else %>
 <strong>Please sign in first </strong>

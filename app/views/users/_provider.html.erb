@@ -1,27 +1,30 @@
-<%= @user.providers.each do |provider| %>
+
+<%if @user.provider %>
+<% @user.provider.provider_details.each do |provider| %>
     <p>
+    
       <strong>City: </strong>
-      <%= provider.provider_detail.city %>
+      <%= provider.city %>
     </p>
     
     <p>
       <strong>State: </strong>
-      <%= provider.provider_detail.state %>
+      <%= provider.state %>
     </p>
     
     <p>
       <strong>Pin Code: </strong>
-      <%= provider.provider_detail.zipcode %>
+      <%= provider.zipcode %>
     </p>
 
     <p>
       <strong>About: </strong>
-      <%= provider.provider_detail.category.name %>
+      <%= provider.category.name %>
     </p>
     
     <p>
       <strong>About: </strong>
-      <%= provider.provider_detail.description %>
+      <%= provider.description %>
     </p>
 
     <%= link_to 'Edit', edit_provider_detail_path(provider), class: "btn btn-warning sm-btn" %>
@@ -29,3 +32,4 @@
     
     <hr>
 <% end %>
+<%end%>
