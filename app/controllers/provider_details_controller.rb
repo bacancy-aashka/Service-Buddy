@@ -4,6 +4,7 @@ class ProviderDetailsController < ApplicationController
   before_action :set_provider_details, only: %i[edit update]
   before_action :check_provider, only: %i[edit]
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_provider_details
+  before_action :is_provider?, only: [:create]
 
 
   def new
@@ -16,8 +17,7 @@ class ProviderDetailsController < ApplicationController
 
   def create
     @user = User.find(current_user.id)
-    @provider = Provider.create(user_id: current_user.id)
-    @provider_detail = ProviderDetail.create(provider_id: @provider.id)
+    @provider_detail = ProviderDetail.create(provider_id: session[:provider_id])
     @provider_detail.update(provider_detail_params)
 
     if @provider_detail.save
@@ -39,8 +39,10 @@ class ProviderDetailsController < ApplicationController
   end
   
   def destroy
-    Provider.find(params[:id]).destroy
+    byebug
+    if ProviderDetail.find(params[:id]).destroy
     redirect_to user_path(current_user), notice: 'your address was successfully destroyed.' 
+    end
   end
 
   private
@@ -60,7 +62,17 @@ class ProviderDetailsController < ApplicationController
   end
 
   def provider_detail_params
-    params.require(:provider_detail).permit(:city, :state, :zipcode, :description, :category_id)
+    params.require(:provider_detail).permit(:city, :state, :zipcode, :description, :category_id, :image)
   end
+
+  def is_provider?
+    @provider = Provider.find_by(user_id: current_user.id)
+    if @provider
+      session[:provider_id]= @provider.id
+    else
+      @provider = Provider.create(user_id: current_user.id)
+      session[:provider_id]= @provider.id
+  end
+end
 
 end
