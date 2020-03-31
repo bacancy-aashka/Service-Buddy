@@ -1,1 +1,18 @@
-<h1>message box </h1>
+  <div class="border-panel" >
+    <div class="heading-panel">
+      <%= link_to (user.firstname+" "+user.lastname), '' %>
+    </div>
+    <hr>
+    <div class="panel-body" >
+      <div class="messages-list">
+        Messages List
+      </div>
+      <hr>
+      New Message:
+      <form class="new_message">
+        <textarea name="body" class="form-control"></textarea><br>
+        <input type="submit" class="btn btn-success" value="Send">
+      </form>
+    </div>
+  </div>
+

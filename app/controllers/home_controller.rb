@@ -7,6 +7,8 @@ class HomeController < ApplicationController
   end
 
   def msg
+    @user = User.find_by(id: params[:user_id])
+    # byebug
     # respond_to do |format|
     #   format.js {}
     # end

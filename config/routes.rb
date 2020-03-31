@@ -3,9 +3,9 @@ Rails.application.routes.draw do
 
   devise_for :users 
 
-  resources :users
-  get 'msg',to: "home#msg"
-
+  resources :users do
+    get 'msg',to: "home#msg"
+  end
   resources :categories
   
   resources :provider_details

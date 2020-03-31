@@ -7,6 +7,8 @@ gem 'devise'
 
 gem 'bootstrap'
 
+gem 'bootstrap-sass'
+
 gem 'jquery-rails'
 
 gem 'popper_js'
