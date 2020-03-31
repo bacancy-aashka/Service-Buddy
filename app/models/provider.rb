@@ -1,4 +1,4 @@
 class Provider < ApplicationRecord
   belongs_to :user
-  has_one :provider_detail, dependent: :destroy
+  has_many :provider_details, dependent: :destroy
 end
