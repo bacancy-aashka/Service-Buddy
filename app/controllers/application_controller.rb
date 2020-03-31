@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   
 
   def after_sign_in_path_for(resource_or_scope)
-    provider = Provider.find_by(User_id: current_user.id)
+    provider = Provider.find_by(user_id: current_user.id)
     if provider
       session[:provider_id]= provider.id
       return root_path
