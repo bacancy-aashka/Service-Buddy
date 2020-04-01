@@ -31,7 +31,11 @@
                             <label>Date of birth</label>
                             <%= f.date_field :dob, value: f.object.try(:strftime,"%d/%m/%Y"), placeholder:"dd/mm/yyyy", class: 'form-control' %>
                           </div>
-                                    
+
+                          <div class="form-group">
+                              Upload Your Image here: <%= f.file_field :image %>
+                          </div>
+
                           <div class="form-group">
                               <label>Password <i>(leave blank if you dont want to change it)</i></label><br />
                               <%= f.password_field :password, autocomplete: "new-password", class:"form-control", placeholder: "new password" %>
