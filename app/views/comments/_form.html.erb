@@ -1,0 +1,10 @@
+<%= form_with(model: @comment, local: true) do |form|%>
+  <%= form.hidden_field :provider_id, value: params[:id] %> 
+  <%= form.hidden_field :user_id, value: current_user.id %>    
+    <div class="form-group">
+      <%= form.text_area :body, placeholder: "Review here", class: "form-control" %>
+    <div>&nbsp
+    <div class="form-group">
+      <%= form.submit %>
+    </div>
+<% end %>

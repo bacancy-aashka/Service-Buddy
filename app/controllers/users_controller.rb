@@ -2,10 +2,11 @@ class UsersController < ApplicationController
 
   before_action :authenticate_user!
   before_action :set_user, only: %i[show]
-  before_action :check_user, only: %i[show]
+  # before_action :check_user, only: %i[show]
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_user
 
   def show
+    @comment = Comment.new
   end
 
   private

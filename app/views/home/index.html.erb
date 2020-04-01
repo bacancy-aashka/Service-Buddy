@@ -1,46 +1,37 @@
 
-      <% if user_signed_in? %>
-      <h1>All Users</h1>
-
-      <%= link_to "Register as a Provider Here", user_path(current_user), method: :get, style: 'float: right; margin: 10px', class: 'btn btn-danger sm-btn' %>
-      <br><br>
+<h1>All Users</h1>
+<%= link_to "Register as a Provider Here", user_path(current_user), method: :get, style: 'float: right; margin: 10px', class: 'btn btn-danger sm-btn' %>
+<br><br>
       
+<div class= "row">
+  <div class="col-md-8">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th>User ID</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Phone No</th>
+          <th>D.O.F.</th>
+          <th></th>
+        </tr>
+      </thead>
 
-  <div class= "row">
-    <div class="col-md-8">
-      <table class="table">
-        <thead class="thead-dark">
+      <tbody>
+        <% @users.each do |user| %>
           <tr>
-            <th>User ID</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
-            <th>Phone No</th>
-            <th>D.O.F.</th>
+            <td><%= user.id %></td>
+            <td><%= user.firstname %></td>
+            <td><%= user.lastname %></td>
+            <td><%= user.email %></td>
+            <td><%= user.contact %></td>
+            <td><%= user.dob.strftime('%v') %></td>
+            <td><%= link_to "Show",user_path(user) %></td>
           </tr>
-        </thead>
-
-        <tbody>
-          <% @users.each do |user| %>
-            <tr>
-              <td><%= user.id %></td>
-              <td><%= user.firstname %></td>
-              <td><%= user.lastname %></td>
-              <td><%= user.email %></td>
-              <td><%= user.contact %></td>
-              <td><%= user.dob.strftime('%v') %></td>
-              <td><%= link_to "Contact",msg_path(user), remote: true %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-    <div class="col-md-4" id="msg_box">
-    </div>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 
-
-<% else %>
-<strong>Please sign in first </strong>
-<hr>
-<% end %>
+</div>

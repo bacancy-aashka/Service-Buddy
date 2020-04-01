@@ -1,0 +1,16 @@
+<p>
+  <strong>Reviewer :</strong>
+  <%= comment.user.firstname %>
+</p>
+<p>
+  <strong>Comment:</strong>
+  <%= comment.body %>
+  <span style="font-size: 11px; color: midnightblue"><i><b> on <%= comment.created_at.strftime('%v') %><b></i></span>
+</p>
+<p>
+  <% if comment.user == current_user %>
+    <%= link_to 'Destroy Comment', comment_path(comment),
+                  method: :delete,
+                  data: { confirm: 'Are you sure?' } %>
+  <% end %>
+</p><hr>
