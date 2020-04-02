@@ -1,0 +1,44 @@
+<% if !@provider_details.empty? %>
+    <% @provider_details.each do |provider| %>
+        <div class="d-flex flex-row bd-highlight mb-3 justify-content-center ">
+            <div class="p-2 bd-highlight">
+                <%= image_tag(provider.image, style:'width:200px;height:200px') if provider.image.attached? %>
+            </div>
+            <div class="p-2 bd-highlight">
+                <p>
+                <strong>City: </strong>
+                <%= provider.city %>
+                </p>
+                
+                <p>
+                <strong>State: </strong>
+                <%= provider.state %>
+                </p>
+                
+                <p>
+                <strong>Pin Code: </strong>
+                <%= provider.zipcode %>
+                </p>
+
+                <p>
+                <strong>About: </strong>
+                <%= provider.category.name %>
+                </p>
+                
+                <p>
+                <strong>Description: </strong>
+                <%= provider.description %>
+                </p>
+                <%= link_to "Contact", remote: true, class:'btn btn-primary' %>
+            </div>
+        </div>
+       
+    <% end %>
+<%else%>
+    <div class="d-flex flex-row bd-highlight mb-3 justify-content-center ">
+        <div class="p-2 bd-highlight">
+            <h2> NO Record Found... </h2>
+        </div>
+    </div>
+
+<%end%>
