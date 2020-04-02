@@ -14,7 +14,6 @@
 }
 
 
-
 // for show.html.erb in users.
 
 .container{
@@ -31,3 +30,9 @@
   font-weight:bold;
 }
  
+// for provider-details.html.erb partial 
+
+.card-horizontal {
+  display: flex;
+  flex: 1 1 auto;
+}
