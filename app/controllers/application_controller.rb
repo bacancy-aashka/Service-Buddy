@@ -8,7 +8,6 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource_or_scope)
     provider = Provider.find_by(user_id: current_user.id)
     if provider
-      session[:provider_id]= provider.id
       return root_path
     end
     
@@ -18,8 +17,8 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:firstname, :lastname, :email, :password, :password_confirmation, :contact, :dob ) }
-    devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:firstname, :lastname, :email, :password, :current_password, :password_confirmation, :contact, :dob ) }
+    devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:firstname, :lastname, :email, :password, :password_confirmation, :contact, :dob, :image ) }
+    devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:firstname, :lastname, :email, :password, :current_password, :password_confirmation, :contact, :dob, :image ) }
   end
 
 end

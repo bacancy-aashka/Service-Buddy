@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
+
   root 'home#index'
+  get 'msg',to: "home#msg"
 
   devise_for :users 
 
@@ -9,7 +11,10 @@ Rails.application.routes.draw do
       get 'find_provider_for_city'
       get 'find_provider_by_category'
     end
-  end
+  end 
+
+  resources :comments
+
 
   resources :categories
   

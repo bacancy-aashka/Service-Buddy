@@ -1,5 +1,6 @@
 @import "bootstrap";
 
+// for sign-in page.
 
 .form-signin {
   width: 100%;
@@ -12,3 +13,21 @@
   box-sizing: border-box;
 }
 
+
+
+// for show.html.erb in users.
+
+.container{
+  padding:5%;
+}
+.img{
+  text-align:center;
+}
+.container .details{
+  border-left:3px solid #ded4da;
+}
+.container .details p{
+  font-size:15px;
+  font-weight:bold;
+}
+ 
