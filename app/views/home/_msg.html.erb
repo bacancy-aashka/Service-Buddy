@@ -1,18 +1,22 @@
-  <div class="border-panel" >
+  <div class="border-panel" data-conversation-id="<%= conversation.id %>">
     <div class="heading-panel">
-      <%= link_to (user.firstname+" "+user.lastname), '' %>
+      <%= link_to (conversation.opposed_user(user).firstname+' '+conversation.opposed_user(user).lastname), '' %>
     </div>
     <hr>
     <div class="panel-body" >
       <div class="messages-list">
-        Messages List
+        <ul>
+          <%= render 'conversations/conversation_content', messages: conversation.messages, user: user %>
+        </ul>
       </div>
       <hr>
       New Message:
-      <form class="new_message">
-        <textarea name="body" class="form-control"></textarea><br>
-        <input type="submit" class="btn btn-success" value="Send">
-      </form>
+        <form class="new_message">
+          <input name="conversation_id" type="hidden" value="<%= conversation.id %>">
+          <input name="user_id" type="hidden" value="<%= user.id %>">
+          <textarea name="body" class="form-control"></textarea>
+          <input type="submit" class="btn btn-success" value="Send">
+        </form>
     </div>
   </div>
 

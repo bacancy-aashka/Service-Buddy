@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :users do
     get 'msg',to: "home#msg"
   end
+
   resources :categories
   
   resources :provider_details
