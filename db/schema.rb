@@ -33,17 +33,6 @@ ActiveRecord::Schema.define(version: 2020_03_31_141046) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "bills", force: :cascade do |t|
-    t.integer "request_id", null: false
-    t.string "method"
-    t.float "tax"
-    t.float "amount"
-    t.float "provider_charge"
-    t.float "total"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["request_id"], name: "index_bills_on_request_id"
-  end
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -84,15 +73,6 @@ ActiveRecord::Schema.define(version: 2020_03_31_141046) do
     t.index ["provider_id"], name: "index_provider_details_on_provider_id"
   end
 
-  create_table "provider_requests", force: :cascade do |t|
-    t.string "status"
-    t.integer "provider_id", null: false
-    t.integer "request_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["provider_id"], name: "index_provider_requests_on_provider_id"
-    t.index ["request_id"], name: "index_provider_requests_on_request_id"
-  end
 
   create_table "provider_skills", force: :cascade do |t|
     t.integer "experience"
@@ -113,37 +93,6 @@ ActiveRecord::Schema.define(version: 2020_03_31_141046) do
     t.index ["user_id"], name: "index_providers_on_user_id"
   end
 
-  create_table "requests", force: :cascade do |t|
-    t.datetime "request_from"
-    t.datetime "requesst_to"
-    t.integer "skill_id", null: false
-    t.integer "user_id", null: false
-    t.integer "provider_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["provider_id"], name: "index_requests_on_provider_id"
-    t.index ["skill_id"], name: "index_requests_on_skill_id"
-    t.index ["user_id"], name: "index_requests_on_user_id"
-  end
-
-  create_table "roles", force: :cascade do |t|
-    t.string "name"
-    t.string "resource_type"
-    t.integer "resource_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
-    t.index ["name"], name: "index_roles_on_name"
-    t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
-  end
-
-  create_table "skills", force: :cascade do |t|
-    t.string "skill_name"
-    t.integer "category_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["category_id"], name: "index_skills_on_category_id"
-  end
 
   create_table "users", force: :cascade do |t|
     t.string "firstname"
@@ -170,18 +119,12 @@ ActiveRecord::Schema.define(version: 2020_03_31_141046) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "bills", "requests"
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
   add_foreign_key "provider_details", "categories"
   add_foreign_key "provider_details", "providers"
-  add_foreign_key "provider_requests", "providers"
-  add_foreign_key "provider_requests", "requests"
-  add_foreign_key "provider_skills", "providers"
-  add_foreign_key "provider_skills", "skills"
   add_foreign_key "providers", "users"
   add_foreign_key "requests", "providers"
   add_foreign_key "requests", "skills"
   add_foreign_key "requests", "users"
-  add_foreign_key "skills", "categories"
 end
