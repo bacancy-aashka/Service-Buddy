@@ -3,10 +3,10 @@
 <%= link_to "Register as a Provider Here", user_path(current_user), method: :get, style: 'float: right; margin: 10px', class: 'btn btn-danger sm-btn' %>
 
 <div style="text-align:center;">
-<%= form_with model:@search,url:find_provider_for_city_home_index_path,remote:true ,method: :get do |f| %>
-  <%= f.select(:city, options_from_collection_for_select(select_city, :city, :city), include_blank: "Select city") %>
-  <%= f.text_field :search_input,placeholder: 'Serach category..'%><%= f.submit "Search", class:"btn btn-primary"%>
-<%end%>
+  <%= form_with model:@search, url: find_provider_for_city_home_index_path, remote: true, method: :get do |f| %>
+    <%= f.select(:city, options_from_collection_for_select(select_city, :city, :city), include_blank: "Select city") %>
+    <%= f.text_field :search_input, placeholder: 'Serach category..' %><%= f.submit "Search", class:"btn btn-primary" %>
+  <%end%>
 </div>
 
 <br><br>

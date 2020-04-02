@@ -4,12 +4,11 @@
 // that code so it'll be compiled.
 
 require("jquery")   
-require("jquery-ujs")
+require('popper.js/dist/umd/popper')
 require("bootstrap")
-require("popper")
 require("@rails/ujs").start()
 require("turbolinks").start()
-require(" @rails/activestorage").start()
+require("@rails/activestorage").start()
 require("channels")
 
 

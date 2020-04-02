@@ -5,6 +5,7 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.create(comment_params)
     @comment.save
+    ActionCable.server.broadcast "comment_channel", { comment: @comment }   
     redirect_to user_path(@comment.provider.user)
   end
 
