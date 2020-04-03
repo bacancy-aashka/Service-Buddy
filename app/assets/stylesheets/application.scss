@@ -1,5 +1,6 @@
 @import "bootstrap";
 
+// for sign-in page.
 
 .form-signin {
   width: 100%;
@@ -44,4 +45,26 @@ ul {
   margin: 5px 20px;
   padding: 10px;
   float: left;
+}
+// for show.html.erb in users.
+
+.container{
+  padding:5%;
+}
+.img{
+  text-align:center;
+}
+.container .details{
+  border-left:3px solid #ded4da;
+}
+.container .details p{
+  font-size:15px;
+  font-weight:bold;
+}
+ 
+// for provider-details.html.erb partial 
+
+.card-horizontal {
+  display: flex;
+  flex: 1 1 auto;
 }

@@ -9,5 +9,4 @@ environment.plugins.prepend('Provide',
     'windows.jQuery': 'jquery'
   })
 )
-
 module.exports = environment

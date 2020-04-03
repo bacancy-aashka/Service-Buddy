@@ -1,41 +1,29 @@
 
-      <% if user_signed_in? %>
-      <h1>All Users</h1>
+<% if user_signed_in? %>
+<%= link_to "Register as a Provider Here", user_path(current_user), method: :get, style: 'float: right; margin: 10px', class: 'btn btn-danger sm-btn' %>
 
-      <%= link_to "Register as a Provider Here", user_path(current_user), method: :get, style: 'float: right; margin: 10px', class: 'btn btn-danger sm-btn' %>
-      <br><br>
-      
+<div style="text-align:center;">
+  <%= form_with model:@search, url: find_provider_for_city_home_index_path, remote: true, method: :get do |f| %>
+    <%= f.select(:city, options_from_collection_for_select(select_city, :city, :city), include_blank: "Select city") %>
+    <%= f.text_field :search_input, placeholder: 'Serach category..' %><%= f.submit "Search", class:"btn btn-primary" %>
+  <%end%>
+</div>
 
+<br><br>
   <div class= "row">
-    <div class="col-md-8">
-      <table class="table">
-        <thead class="thead-dark">
-          <tr>
-            <th>User ID</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
-            <th>Phone No</th>
-            <th>D.O.F.</th>
-          </tr>
-        </thead>
+    <div class="col-md-2 text-center">
+      <h3>
+        Category
+      </h3>
+        <ul class="list-group">
+          <% @categories.each do |category|%>
+            <li class="list-group-item" ><%= link_to category.name,find_provider_by_category_home_index_path(category),remote:true%> </li>
+          <%end%>
+        </ul>
+    </div>
 
-        <tbody>
-          <% @users.each do |user| %>
-            <tr>
-              <%if current_user != user%>
-                <td><%= user.id %></td>
-                <td><%= user.firstname %></td>
-                <td><%= user.lastname %></td>
-                <td><%= user.email %></td>
-                <td><%= user.contact %></td>
-                <td><%= user.dob.strftime('%v') %></td>
-                <td><%= link_to "Contact",user_msg_path(user), remote: true %></td>
-              <% end %>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+    <div class="col-md-6" id="provider-detail">
+      <%= render 'provider-details'%>
     </div>
     <div class="col-md-4" id="msg_box">
     </div>
@@ -46,3 +34,4 @@
 <strong>Please sign in first </strong>
 <hr>
 <% end %>
+    

@@ -1,44 +1,26 @@
-<%if @user.provider %>
-<% @user.provider.provider_details.each do |provider| %>
-    <div class="d-flex flex-row bd-highlight mb-3">
-      <div class="p-2 bd-highlight">
-        <%= image_tag(provider.image, style:'width:200px;height:200px') if provider.image.attached? %>
+<% if @user.provider %>
+  <% @user.provider.provider_details.each do |provider| %>
+    <div class="card">
+      <div class="card-header">
+        Profession Information
       </div>
-       <div class="p-2 bd-highlight">
-        <p>
-          <strong>City: </strong>
-          <%= provider.city %>
-        </p>
-        
-        <p>
-          <strong>State: </strong>
-          <%= provider.state %>
-        </p>
-        
-        <p>
-          <strong>Pin Code: </strong>
-          <%= provider.zipcode %>
-        </p>
+      <div class="card-body">
+        <h4 class="card-title">
+        <b><%= provider.category.name %></b>
+        </h4>
+        <h5>City: <%= provider.city %></h5>
+        <p class="card-text"> <%= provider.description %></p>
+        <p class="card-text"><i> <%= provider.state %></i></p>
+        <p class="card-text"><i> <%= provider.zipcode %></i></p>
 
-        <p>
-          <strong>About: </strong>
-          <%= provider.category.name %>
-        </p>
-        
-        <p>
-          <strong>About: </strong>
-          <%= provider.description %>
-        </p>
-
-        <%= link_to 'Edit', edit_provider_detail_path(provider), class: "btn btn-warning sm-btn" %>
-        <%= button_to 'Delete', provider_detail_path(provider), method: :delete, class: "btn btn-danger sm-btn" %>
       </div>
-      <div class="col">
+      <div class="card-footer">
+        <% if current_user == @user %>
+          <%= link_to 'Edit', edit_provider_detail_path(provider), class: "btn btn-warning sm-btn" %>
+          <%= link_to 'Delete', provider_detail_path(provider), method: :delete, class: "btn btn-danger sm-btn" %>
+        <% end %>
       </div>
-    </div>
-    <hr>
+    </div><br>
+  <% end %>
 <% end %>
-
-<%end%>
-
 
