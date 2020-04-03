@@ -5,7 +5,10 @@ Rails.application.routes.draw do
 
   devise_for :users 
 
-  resources :users
+  resources :users do
+    get 'msg',to: "home#msg" 
+  end
+  
   resources :home do
     collection do
       get 'find_provider_for_city'

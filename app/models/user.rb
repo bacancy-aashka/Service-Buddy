@@ -6,5 +6,7 @@ class User < ApplicationRecord
 
   has_one_attached :image
   has_one :provider, dependent: :destroy
+  has_many :messages
+  has_many :conversations, foreign_key: :sender_id
   has_many :comments, dependent: :destroy
 end
