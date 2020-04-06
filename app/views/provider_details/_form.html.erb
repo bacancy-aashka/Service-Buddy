@@ -1,5 +1,5 @@
 <hr><br></br>
-<%= form_with(model: provider_detail, local: true) do |form| %>
+<%= form_with(model: provider_detail, remote: true) do |form| %>
   <% if provider_detail.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(provider_detail.errors.count, "error") %> prohibited this details from being saved:</h2>
@@ -33,7 +33,7 @@
   </div>  
 
   <div class="field">
-      <label>Select Category of Profession :</label>&nbsp&nbsp&nbsp&nbsp
+      <label>Select Category of Profession :</label> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
       <%= form.collection_select :category_id, Category.all,:id,:name, include_blank: false %>
   </div><br>
     

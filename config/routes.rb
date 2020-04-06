@@ -20,11 +20,10 @@ Rails.application.routes.draw do
     end
   end 
 
-  resources :comments
-
-
   resources :categories
   
-  resources :provider_details
+  resources :provider_details do
+    resources :comments
+  end
 
 end

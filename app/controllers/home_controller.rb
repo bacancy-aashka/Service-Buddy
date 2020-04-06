@@ -9,7 +9,6 @@ class HomeController < ApplicationController
 
   def msg
     @conversation = Conversation.get(current_user.id, params[:user_id])
-
     add_to_conversations
   end
 
@@ -28,11 +27,11 @@ class HomeController < ApplicationController
     render json: { provider_detail:render_to_string('home/_provider-details', layout:false, locals: { provider_details: @provider_details }) }
   end
 
+
   private
 
   def add_to_conversations
     session[:conversations] = @conversation.id
   end
-
   
 end

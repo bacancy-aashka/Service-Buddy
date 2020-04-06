@@ -1,41 +1,17 @@
-<% if !@provider_details.empty? %>
-  <% cache @provider_details do %>
-    <% @provider_details.each do |provider| %>
-      <% cache provider do %>
-        <%#if current_user != provider.provider.user%>
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col-12 mt-3">
-                <div class="card">
-                  <div class="card-header">
-                    <b><u><%= provider.category.name %></u> :</b>
-                  </div>
-                  <div class="card-horizontal">
-                    <div class="img-square-wrapper">
-                      <%= image_tag(provider.image, style:'width:200px;height:200px') if provider.image.attached? %>
-                    </div>
-                    <div class="card-body">
-                      <p class="card-text"><b>City : <%= provider.city %></b></p>
-                      <p class="card-text">Name : <%= "#{provider.provider.user.firstname}" + " " + "#{provider.provider.user.lastname}" %></p>
-                      <p class="card-text">zip-code : <%= provider.zipcode %></p>
-                      <p class="card-text">State : <%= provider.state %></p>
-                    </div>
-                  </div>
-                  <div class="card-footer">
-                    <%= link_to "Contact", user_msg_path(provider.provider.user), remote: true , class:'btn btn-secondary btn-sm' %>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        <%# end %>
-      <% end %>
-    <% end %>
-  <% end %>  
-<% else %>  
-  <div class="d-flex flex-row bd-highlight mb-3 justify-content-center ">
-    <div class="p-2 bd-highlight">
-      <h2> NO Record Found... </h2>
+<div id="provider-detail">
+  <% if @provider_details.present? %>
+      <% cache @provider_details do %>
+        <% @provider_details.each do |provider_detail| %>
+          <% cache provider_detail do %>
+            <%= render partial: '/home/provider_detail', locals: { provider_detail: provider_detail } %>
+          <% end %>
+        <% end %>
+      <% end %>  
+  <% else %>  
+    <div class="d-flex flex-row bd-highlight mb-3 justify-content-center ">
+      <div class="p-2 bd-highlight">
+        <h2> NO Record Found... </h2>
+      </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>

@@ -9,20 +9,18 @@
           <%= link_to image_tag(provider.image, style:'width:200px;height:200px') if provider.image.attached? %>
         </div>
       <div class="card-body">
-        <%# <h4 class="card-title">
         
-        </h4> %>
         
         <p class="card-text"><i><%= provider.city %>, <%= provider.state %></i></p>
         <p class="card-text"><i> <%= provider.zipcode %></i></p>
 
+
       </div>
       </div>
       <div class="card-footer">
-        <% if current_user == @user %>
-          <%= link_to 'Edit', edit_provider_detail_path(provider), class: "btn btn-warning sm-btn" %>
-          <%= link_to 'Delete', provider_detail_path(provider), method: :delete, class: "btn btn-danger sm-btn" %>
-        <% end %>
+        <%= link_to "show", provider_detail_path(provider), class:'btn btn-secondary btn-sm' %>
+        <%= link_to 'Edit', edit_provider_detail_path(provider), class: "btn btn-warning btn-sm" %>
+        <%= link_to 'Delete', provider_detail_path(provider), method: :delete, class: "btn btn-danger btn-sm" %>
       </div>
     </div><br>
   <% end %>

@@ -11,7 +11,6 @@ class ApplicationController < ActionController::Base
       session[:provider_id]= provider.id
     end
     return root_path
-    
   end
 
   
