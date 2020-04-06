@@ -6,7 +6,6 @@ class UsersController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_user
 
   def show
-    @comment = Comment.new
   end
 
   private

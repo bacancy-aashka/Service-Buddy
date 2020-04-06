@@ -1,14 +1,16 @@
 class ProviderDetailsController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :set_provider_details, only: %i[edit update]
+  before_action :set_provider_details, only: %i[edit show update]
   before_action :check_provider, only: %i[edit]
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_provider_details
-  # before_action :is_provider?, only: [:create]
 
 
   def new
     @provider_detail = ProviderDetail.new
+  end
+  
+  def show
   end
 
   def index
@@ -27,6 +29,7 @@ class ProviderDetailsController < ApplicationController
     @provider_detail.update(provider_detail_params)
 
     if @provider_detail.save
+      # ActionCable.server.broadcast "provider_detail_channel", { provider_detail: (render partial: "home/provider-details", locals: { provider_detail: @provider_detail }) }   
       redirect_to user_path(current_user), notice: 'Your adderess successfully added to your profile.' 
     else
       render :new 
@@ -69,15 +72,5 @@ class ProviderDetailsController < ApplicationController
   def provider_detail_params
     params.require(:provider_detail).permit(:city, :state, :zipcode, :description, :category_id)
   end
-
-  # def is_provider?
-  #   @provider = Provider.find_by(user_id: current_user.id)
-  #   if @provider
-  #     session[:provider_id]= @provider.id
-  #   else
-  #     @provider = Provider.create(user_id: current_user.id)
-  #     session[:provider_id]= @provider.id
-  #   end
-  # end
 
 end

@@ -107,3 +107,37 @@
 
  $: 'jquery/src/jquery',
     jQuery: 'jquery/src/jquery',
+
+=============================================================================================================================
+<%= render partial: '/users/provider', locals: {user: @user} %>
+  <% if @user.provider.present? %>
+    <% unless @user == current_user %>
+      <h5><b>Give Review:</b></h5><hr>
+      <%= render 'comments/form', locals: {user: @user} %><hr>
+    <% end %>
+    <h5><b>Reviews :</b></h5>
+    <hr>
+    <div id= "action_cable_comment">
+      <%= render @user.provider.comments %>
+    </div>  
+    <hr>
+<% end %>
+==================================
+  <span style="font-size: 10px; color: midnightblue"><i><b> on <%= comment.created_at.strftime('%v') %></b></i></span>
+=================================================
+ respond_to do |format|
+            if @book.save
+              @book_seller = BookSeller.new(seller_id: current_user.id, book_id: @book.id)
+              # @book_seller.seller_id = current_user.id
+              # @book_seller.book_id = @book.id
+              @book_seller.save
+              format.html { redirect_to book_path(@book, @book_seller), notice: 'Book was successfully created.' }
+              format.json { render :show, status: :created, location: @book }
+            else
+              format.html { render :new }
+              format.json { render json: @book.errors, status: :unprocessable_entity }
+            end
+          end
+================================================
+<td><button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#reject_order_<%= cart.id.to_s %>">Reject Order</button></td>
+<div id="reject_order_<%= cart.id.to_s %>" class="modal fade" tabindex="-1">

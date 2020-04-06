@@ -2,10 +2,10 @@
 
 one:
   body: MyText
-  provider: one
+  provider_detail: one
   user: one
 
 two:
   body: MyText
-  provider: two
+  provider_detail: two
   user: two

@@ -1,16 +1,18 @@
-<p>
-  <strong>Reviewer :</strong>
-  <%= comment.user.firstname %>
-</p>
-<p>
-  <strong>Comment:</strong>
-  <%= comment.body %>
-  <span style="font-size: 10px; color: midnightblue"><i><b> on <%= comment.created_at.strftime('%v') %></b></i></span>
-</p>
-<p>
-  <% if comment.user == current_user %>
-    <%= link_to 'Destroy Comment', comment_path(comment),
-                  method: :delete,
-                  data: { confirm: 'Are you sure?' } %>
-  <% end %>
-</p><hr>
+<% if comment.id.present? %>
+  <p>
+    <strong>Reviewer :</strong>
+    <%= comment.user.firstname %>
+  </p>
+  <p>
+    <strong>Comment :</strong>
+    <%= comment.body %>
+    <span style="font-size: 10px; color: midnightblue"><i><b> on <%= comment.created_at.strftime('%v') %></b></i></span>
+  </p>
+  <p>
+    <% if comment.user_id == current_user.id %>
+      <%= link_to 'Destroy Comment', [comment.provider_detail, comment],
+                    method: :delete,
+                    data: { confirm: 'Are you sure?' } %>
+    <% end %>
+  </p><hr>
+<% end %>
