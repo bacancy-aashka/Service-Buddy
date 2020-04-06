@@ -2,7 +2,7 @@
   <% cache @provider_details do %>
     <% @provider_details.each do |provider| %>
       <% cache provider do %>
-        <%if current_user != provider.provider.user%>
+        <%#if current_user != provider.provider.user%>
           <div class="container-fluid">
             <div class="row">
               <div class="col-12 mt-3">
@@ -12,14 +12,13 @@
                   </div>
                   <div class="card-horizontal">
                     <div class="img-square-wrapper">
-                      <%= image_tag(provider.provider.user.image, style:'width:200px;height:200px') if provider.provider.user.image.attached? %>
+                      <%= image_tag(provider.image, style:'width:200px;height:200px') if provider.image.attached? %>
                     </div>
                     <div class="card-body">
                       <p class="card-text"><b>City : <%= provider.city %></b></p>
                       <p class="card-text">Name : <%= "#{provider.provider.user.firstname}" + " " + "#{provider.provider.user.lastname}" %></p>
                       <p class="card-text">zip-code : <%= provider.zipcode %></p>
                       <p class="card-text">State : <%= provider.state %></p>
-                      <p class="card-text">About: <%= provider.description %></p>
                     </div>
                   </div>
                   <div class="card-footer">
@@ -29,7 +28,7 @@
               </div>
             </div>
           </div>
-        <% end %>
+        <%# end %>
       <% end %>
     <% end %>
   <% end %>  

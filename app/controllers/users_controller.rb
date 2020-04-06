@@ -9,6 +9,11 @@ class UsersController < ApplicationController
     @comment = Comment.new
   end
 
+  def provider_post_detail
+    @provider = ProviderDetail.find(params[:format])
+   
+  end
+
   private
 
   def set_user

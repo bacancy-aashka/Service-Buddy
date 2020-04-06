@@ -23,6 +23,10 @@ class HomeController < ApplicationController
     @provider_details= ProviderDetail.where(category_id: category_id.id, city: params[:city])
   end
 
+  def filter_for_cities
+    @provider_details= ProviderDetail.where(city: params[:city])
+    render json: { provider_detail:render_to_string('home/_provider-details', layout:false, locals: { provider_details: @provider_details }) }
+  end
 
   private
 
