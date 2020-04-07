@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   devise_for :users 
 
   resources :users do
+    get 'inbox', on: :collection, to: "conversations#inbox"  
     get 'msg',to: "home#msg" 
   end
   

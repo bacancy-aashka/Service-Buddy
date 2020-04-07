@@ -23,7 +23,8 @@
                     </div>
                   </div>
                   <div class="card-footer">
-                    <%= link_to "Contact", user_msg_path(provider.provider.user), remote: true , class:'btn btn-secondary btn-sm' %>
+                    <%= link_to "Contact", user_msg_path(provider.provider.user), remote: true , class:'btn btn-secondary btn-sm msg_read' %>
+                    <%= link_to "Show", user_path(provider.provider.user), class:'btn btn-secondary btn-sm' %>
                   </div>
                 </div>
               </div>

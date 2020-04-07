@@ -1,7 +1,6 @@
 @import "bootstrap";
 
 // for sign-in page.
-
 .form-signin {
   width: 100%;
   max-width: 330px;
@@ -25,7 +24,7 @@ ul {
 }
 
 .messages-list {
-  max-height: 200px;
+  max-height: 450px;
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -36,7 +35,6 @@ ul {
   border-color: #BCE8F1;
   margin: 5px 20px;
   padding: 10px;
-  float: right;
 }
 
 .message-received {
@@ -44,27 +42,35 @@ ul {
   border-color: #EEEEEE;
   margin: 5px 20px;
   padding: 10px;
-  float: left;
 }
-// for show.html.erb in users.
 
-.container{
-  padding:5%;
-}
-.img{
-  text-align:center;
-}
-.container .details{
-  border-left:3px solid #ded4da;
-}
-.container .details p{
-  font-size:15px;
-  font-weight:bold;
-}
- 
 // for provider-details.html.erb partial 
 
 .card-horizontal {
   display: flex;
   flex: 1 1 auto;
 }
+
+.container{
+  padding:2%;
+  }
+  .img{
+  text-align:center;
+  }
+  .container .details{
+  border-left:3px solid #ded4da;
+  }
+  .container .details p{
+  font-size:15px;
+  font-weight:bold;
+  }
+
+  // Notification CSS
+
+  .badge {
+    border-radius: 52%;
+    font-size: 12px;
+    background: red;
+    color: white;
+    margin-left: 1px;
+  }

@@ -11,11 +11,30 @@ class Conversation < ApplicationRecord
     )
   end
 
+  scope :mycon, -> (my_id) do
+    where(sender_id: my_id).or(
+      where(recipient_id: my_id)
+    )
+  end
+
+  def self.get_my_conversation(my_id)
+    conversations = mycon(my_id)
+    return conversations  
+  end
+
   def self.get(sender_id, recipient_id)
     conversation = between(sender_id, recipient_id).first
     return conversation if conversation.present?
 
     create(sender_id: sender_id, recipient_id: recipient_id)
+  end
+
+  def self.read_message(conversation_id, user_id)
+    messages = Message.where(conversation_id: conversation_id).where(read_at: nil).where.not(user_id: user_id)
+    messages.each do |message|
+      message.read_at = DateTime.now
+      message.save!
+    end
   end
 
   def opposed_user(user)

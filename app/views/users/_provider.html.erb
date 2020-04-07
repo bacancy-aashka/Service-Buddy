@@ -10,7 +10,7 @@
         </h4>
         <h5>City: <%= provider.city %></h5>
         <p class="card-text"> <%= provider.description %></p>
-        <p class="card-text"><i> <%= provider.state %></i></p>
+        <p class="card-text"><i> <%= CS.states(:in)[provider.state.to_sym]  %></i></p>
         <p class="card-text"><i> <%= provider.zipcode %></i></p>
 
       </div>
