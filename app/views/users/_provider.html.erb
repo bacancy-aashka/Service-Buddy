@@ -2,23 +2,25 @@
   <% @user.provider.provider_details.each do |provider| %>
     <div class="card">
       <div class="card-header">
-        Profession Information
+       <b><%= provider.category.name %></b>
       </div>
+      <div class="card-horizontal">
+        <div class="img-square-wrapper">
+          <%= link_to image_tag(provider.image, style:'width:200px;height:200px') if provider.image.attached? %>
+        </div>
       <div class="card-body">
-        <h4 class="card-title">
-        <b><%= provider.category.name %></b>
-        </h4>
-        <h5>City: <%= provider.city %></h5>
-        <p class="card-text"> <%= provider.description %></p>
-        <p class="card-text"><i> <%= provider.state %></i></p>
+        
+        
+        <p class="card-text"><i><%= provider.city %>, <%= provider.state %></i></p>
         <p class="card-text"><i> <%= provider.zipcode %></i></p>
 
+
+      </div>
       </div>
       <div class="card-footer">
-        <% if current_user == @user %>
-          <%= link_to 'Edit', edit_provider_detail_path(provider), class: "btn btn-warning sm-btn" %>
-          <%= link_to 'Delete', provider_detail_path(provider), method: :delete, class: "btn btn-danger sm-btn" %>
-        <% end %>
+        <%= link_to "show", provider_detail_path(provider), class:'btn btn-secondary btn-sm' %>
+        <%= link_to 'Edit', edit_provider_detail_path(provider), class: "btn btn-warning btn-sm" %>
+        <%= link_to 'Delete', provider_detail_path(provider), method: :delete, class: "btn btn-danger btn-sm" %>
       </div>
     </div><br>
   <% end %>

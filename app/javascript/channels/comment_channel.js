@@ -2,8 +2,8 @@ import consumer from "./consumer"
 
 consumer.subscriptions.create("CommentChannel", {
   connected() {
-    // # // Called when the subscription is ready for use on the server
-    console.log("Here you are connected to Comment channel.")
+     // Called when the subscription is ready for use on the server
+    console.log("Here you are connected to Comment channel.");
   },
 
   disconnected() {
@@ -12,5 +12,7 @@ consumer.subscriptions.create("CommentChannel", {
 
   received(data) {
     // Called when there's incoming data on the websocket for this channel
+    console.log("Receiving");
+    $('#action_cable_comment').append(data['comment']);
   }
 });

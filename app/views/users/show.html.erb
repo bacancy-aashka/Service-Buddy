@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-3">
-      <h1 class="my-4">Shop Name</h1>
+      <h1 class="my-4"></h1>
       <div class="list-group">
         <% if current_user == @user %>
           <%= link_to "Create Profile", new_provider_detail_path, style: 'float: right', class: 'btn btn-danger sm-btn' %> &nbsp
@@ -9,7 +9,6 @@
         <%= link_to 'Back', '/', class: "btn btn-secondary sm-btn" %>
       </div>
     </div>
-
     <div class="col-lg-9">
       <div class="container">
         <div class="row">
@@ -31,19 +30,5 @@
     </div>
   </div>  
   <hr>
-  <div class= "row">
-      <%= render partial: '/users/provider', locals: {user: @user} %>
-    <% if @user.provider.present? %>
-      <% unless @user == current_user %>
-        <h5><b>Give Review:</b></h5><hr>
-        <%= render 'comments/form', locals: {user: @user} %><hr>
-      <% end %>
-      <h5><b>Reviews :</b></h5>
-      <hr>
-      <div id= "action_cable_comment">
-        <%= render @user.provider.comments %>
-      </div>  
-      <hr>
-    <% end %>
-  </div>
+  <%= render partial: '/users/provider', locals: {user: @user} %>
 </div>

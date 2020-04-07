@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_01_065831) do
+ActiveRecord::Schema.define(version: 2020_04_06_101438) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -41,11 +41,11 @@ ActiveRecord::Schema.define(version: 2020_04_01_065831) do
 
   create_table "comments", force: :cascade do |t|
     t.text "body"
-    t.integer "provider_id", null: false
+    t.integer "provider_detail_id", null: false
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["provider_id"], name: "index_comments_on_provider_id"
+    t.index ["provider_detail_id"], name: "index_comments_on_provider_detail_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
@@ -106,7 +106,7 @@ ActiveRecord::Schema.define(version: 2020_04_01_065831) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "comments", "providers"
+  add_foreign_key "comments", "provider_details"
   add_foreign_key "comments", "users"
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
