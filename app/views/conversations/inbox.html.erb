@@ -1,0 +1,23 @@
+<% if !@conversations.empty? %>
+<div class= "row" style="margin-right: 0px; !important">
+    <div class="col-md-2 text-center">
+      <h3>
+        Users
+      </h3>
+        <ul class="list-group refresh">
+          <% @conversations.each do |conversation|%>
+            <li class="list-group-item" ><%= link_to (conversation.opposed_user(current_user).firstname+' '+conversation.opposed_user(current_user).lastname),  user_msg_path(conversation.opposed_user(current_user)), remote:true, class: "msg_read" %> <sup class="badge"><% new_message_count(conversation.id) %><%= @count%></sup></li>
+          <%end%>
+        </ul>
+    </div>
+
+    <div class="col-md-8" id="msg_box" class="inbox-height">
+    </div>
+</div>
+<% else %>  
+  <div class="d-flex flex-row bd-highlight mb-3 justify-content-center ">
+    <div class="p-2 bd-highlight">
+      <h2> No Conversations Yet... </h2>
+    </div>
+  </div>
+<% end %>

@@ -9,6 +9,7 @@ class HomeController < ApplicationController
 
   def msg
     @conversation = Conversation.get(current_user.id, params[:user_id])
+    Conversation.read_message(@conversation.id, current_user.id)
     add_to_conversations
   end
 

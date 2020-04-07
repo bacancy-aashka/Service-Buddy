@@ -13,7 +13,7 @@ require("channels")
 require("jquery")   
 require("bootstrap")
 require('popper.js/dist/umd/popper')
-// require("packs/cable.js")
+require("packs/address.js")
 
 
 

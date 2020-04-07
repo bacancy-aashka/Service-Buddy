@@ -1,6 +1,6 @@
 <li>
   <div class="row">
-    <div class="<%= user.id == message.user_id ? 'message-sent' : 'message-received' %>">
+    <div class="<%= user.id == message.user_id ? 'message-sent float-right' : 'message-received float-left' %>">
       <div style="font-size: 12px; margin=0px;"><%= message.user.firstname %></div>
       <hr style=" padding: 0 !important; margin: 0 !important;">
       <div style="font-size: 15px; margin=0px;"><%= message.body %></div>

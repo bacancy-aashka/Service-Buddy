@@ -13,6 +13,7 @@ class ApplicationController < ActionController::Base
     return root_path
   end
 
+
   
   protected
 

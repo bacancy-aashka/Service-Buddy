@@ -3,7 +3,9 @@
       <% cache @provider_details do %>
         <% @provider_details.each do |provider_detail| %>
           <% cache provider_detail do %>
+          <%if current_user != provider_detail.provider.user%>
             <%= render partial: '/home/provider_detail', locals: { provider_detail: provider_detail } %>
+          <% end %>
           <% end %>
         <% end %>
       <% end %>  

@@ -13,8 +13,8 @@
             <div class="card-body">
               <p class="card-text"><b>City : <%= provider_detail.city %></b></p>
               <p class="card-text">Name : <%= "#{provider_detail.provider.user.firstname}" + " " + "#{provider_detail.provider.user.lastname}" %></p>
-              <p class="card-text">zip-code : <%= provider_detail.zipcode %></p>
-              <p class="card-text">State : <%= provider_detail.state %></p>
+              <p class="card-text">Zip-code : <%= provider_detail.zipcode %></p>
+              <p class="card-text">State : <%= CS.states(:in)[provider_detail.state.to_sym] %></p>
               <p class="card-text">About: <%= provider_detail.description %></p>
             </div>
           </div>

@@ -14,7 +14,7 @@ class ProviderDetailsController < ApplicationController
   end
 
   def index
-    @provider_details = CS.cities(params[:state])
+    @cities = CS.cities(params[:state])
   end    
 
   def create

@@ -12,7 +12,12 @@
     </ul>
     <ul class="navbar nav ml-auto" %>
       <% if current_user %>
-        <%= link_to "Your Profile", user_path(current_user), class:'nav-link' %> 
+        
+          <%= link_to "Inbox", inbox_users_path, {style: "padding-right:0px;",class:'nav-link'} %>
+          <sup class="badge"><% navbar_inbox_count %><%= @count%></sup>
+        
+        <%= link_to "Your Profile", user_path(current_user), class:'nav-link' %>
+        
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <%= current_user.firstname %>
@@ -23,6 +28,7 @@
             <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>
+      
       <% else %>
         <li class="nav-item">
           <%= link_to "Create Account", new_user_registration_path, class:"nav-link" %>

@@ -10,7 +10,7 @@
                 <div class="details col-md-6">
                     <h3 class="product-title"><%= @provider.category.name %></h3>
                     <p class="product-description"><%= @provider.description %></p>
-                    <h5><b>Address</b></h5><p><%= @provider.city %>,<%= @provider.zipcode %>,<%= @provider.state %></p>
+                    <h5><b>Address</b></h5><p><%= @provider.city %>,<%= @provider.zipcode %>,<%= CS.states(:in)[@provider.state.to_sym] %></p>
                     <div class="action">
                         <% if @provider.provider.user_id == current_user.id %>
                             <%= link_to 'Edit', edit_provider_detail_path(@provider), class: "btn btn-warning sm-btn" %>

@@ -1,16 +1,17 @@
 <%= javascript_pack_tag 'home' %>
 <% if user_signed_in? %>
-<%= link_to "Register as a Provider Here", user_path(current_user), method: :get, style: 'float: right; margin: 10px', class: 'btn btn-danger sm-btn' %>
+<%= link_to "Register as a Provider Here", user_path(current_user), method: :get, style: 'float: right; margin-right: 10px', class: 'btn btn-danger sm-btn' %>
 
 <div style="text-align:center;">
   <%= form_with model:@search, url: find_provider_for_city_home_index_path, remote: true, method: :get do |f| %>
-    <%= f.select(:city, options_from_collection_for_select(select_city, :city, :city), include_blank: "Select city") %>
-    <%= f.text_field :search_input, placeholder: 'Serach category..' %><%= f.submit "Search", class:"btn btn-primary" %>
+    <%= f.select(:city, options_from_collection_for_select(select_city, :city, :city), include_blank: "Select city") %>&nbsp;&nbsp;&nbsp;
+    <%= f.text_field :search_input, placeholder: 'Serach category..' %>&nbsp;&nbsp;&nbsp;
+    <%= f.submit "Search", class:"btn btn-primary" %>
   <%end%>
 </div>
 
 <br><br>
-  <div class= "row">
+  <div class= "row" style="margin-right: 0px; !important">
     <div class="col-md-2 text-center">
       <h3>
         Category
