@@ -1,0 +1,29 @@
+<div id="provider_detail_<%= provider_detail.id.to_s %>" >
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12 mt-3">
+        <div class="card">
+          <div class="card-header">
+            <b><u><%= provider_detail.category.name %></u> :</b>
+          </div>
+          <div class="card-horizontal">
+            <div class="img-square-wrapper">
+              <%= image_tag(provider_detail.image, style:'width:200px;height:200px') if provider_detail.image.attached? %>
+            </div>
+            <div class="card-body">
+              <p class="card-text"><b>City : <%= provider_detail.city %></b></p>
+              <p class="card-text">Name : <%= "#{provider_detail.provider.user.firstname}" + " " + "#{provider_detail.provider.user.lastname}" %></p>
+              <p class="card-text">zip-code : <%= provider_detail.zipcode %></p>
+              <p class="card-text">State : <%= provider_detail.state %></p>
+              <p class="card-text">About: <%= provider_detail.description %></p>
+            </div>
+          </div>
+          <div class="card-footer">
+            <%= link_to "Contact", provider_detail_path(provider_detail), class:'btn btn-secondary btn-sm' %>
+            <%= link_to "Message here", user_msg_path(provider_detail.provider.user), remote: true , class:'btn btn-secondary btn-sm' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>  

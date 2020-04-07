@@ -3,23 +3,26 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    @comment = Comment.create(comment_params)
+    @provider_detail = ProviderDetail.find(params[:provider_detail_id])
+    @comment = @provider_detail.comments.create(comment_params)
+    @comment.user_id = current_user.id
     @comment.save
-    ActionCable.server.broadcast "comment_channel", { comment: @comment }   
-    redirect_to user_path(@comment.provider.user)
+    # ActionCable.server.broadcast "comment_channel", { comment: (render partial: "comments/comment", locals: { comment: @comment }) }   
+    # ActionCable.server.broadcast "comment_channel", comment: @comment   
+    redirect_to provider_detail_path(@provider_detail)
   end
 
   def destroy
-    @comment = Comment.find(params[:id])
-    @provider = @comment.provider.user
+    @provider_detail = ProviderDetail.find(params[:provider_detail_id])
+    @comment = @provider_detail.comments.find(params[:id])
     @comment.destroy
-    redirect_to user_path(@provider)
+    redirect_to provider_detail_path(@provider_detail)
   end
  
   private
 
   def comment_params
-    params.require(:comment).permit(:body, :provider_id, :user_id)
+    params.require(:comment).permit(:body)
   end
 
 end

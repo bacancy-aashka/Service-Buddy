@@ -6,7 +6,11 @@ class UsersController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_user
 
   def show
-    @comment = Comment.new
+  end
+
+  def provider_post_detail
+    @provider = ProviderDetail.find(params[:format])
+   
   end
 
   private

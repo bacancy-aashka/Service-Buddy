@@ -1,4 +1,4 @@
-document.getElementById("msg_box").innerHTML= "<%= j render 'msg', conversation: @conversation, user: current_user%>";
+document.getElementById("msg_box").innerHTML= "<%= j render 'msg', conversation: @conversation, user: current_user %>";
 
 var conversation = $("#msg_box");
 var messages_list = conversation.find('.messages-list');

@@ -1,0 +1,47 @@
+<% if @provider_detail.present? %>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3">
+        <h1 class="my-4"><%= @provider_detail.category.name %></h1>
+        <div class="list-group">
+          <% if @provider_detail.provider.user == current_user %>
+            <%= link_to "Create Profile", new_provider_detail_path, style: 'float: right', class: 'btn btn-info btn-sm' %> &nbsp
+            <%= link_to 'Edit', edit_provider_detail_path(@provider_detail), class: "btn btn-warning btn-sm" %> &nbsp
+            <%= link_to 'Delete', provider_detail_path(@provider_detail), method: :delete, class: "btn btn-danger btn-sm" %> &nbsp
+          <% else %>
+            <%= link_to "Message here", user_msg_path(@provider_detail.provider.user), remote: true , class:'btn btn-info btn-sm' %>
+          <% end %>          
+        </div>
+      </div>
+      <div class="col-lg-9">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 img">
+              <%= image_tag(@provider_detail.image, class: "img-rounded", style:"width:200px;height:200px;") if @provider_detail.image.attached? %>
+            </div>
+            <div class="col-md-6 details">
+              <blockquote>
+                <h5><b><%= "#{@provider_detail.provider.user.firstname}" + " " + "#{@provider_detail.provider.user.lastname}" %><b></h5><hr>
+              </blockquote>
+              <p>
+                <h5><b><i>Address :</i></b></h5> <h6><%=" #{@provider_detail.city}" + ", " + "#{@provider_detail.state}" + ", Zip-code: " + "#{@provider_detail.zipcode}" %></h6><hr>
+                <h5><b><i>Description :</i></b></h5> <h6><%= @provider_detail.description %></h6><hr>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> 
+    <div class="col-md-4" id="msg_box"></div>
+  <hr>
+  <% unless @provider_detail.provider.user == current_user %>
+    <h5><b>Give Review:</b></h5><hr>
+    <%= render 'comments/form' %><hr>
+  <% end %>
+  <h5><b>Reviews :</b></h5><hr>
+  <div id= "action_cable_comment">
+    <%= render @provider_detail.comments %>
+  </div>  
+</div>
+<% end %>
+  
