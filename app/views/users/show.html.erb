@@ -9,28 +9,26 @@
         <%= link_to 'Back', '/', class: "btn btn-secondary sm-btn" %>
       </div>
     </div>
-    <div class="col-lg-9">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 img">
-            <%= image_tag(@user.image, class: "img-rounded") if @user.image.attached? %>
-          </div>
-          <div class="col-md-6 details">
-            <blockquote>
-              <h5><%= "#{@user.firstname}" + " " + "#{@user.lastname}" %></h5>
-              <small><i class="icon-map-marker">D.O.B. : <%= @user.dob.strftime('%v') %></small>
-            </blockquote>
-            <p>
-              <h6><b><%= @user.email %></b></h6>
-              <h6><b>Contact No : <%= @user.contact %></b></h6>
-            </p>
-          </div>
+
+  <div class="col-lg-9">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 img">
+          <%= image_tag(@user.image, class: "img-rounded") if @user.image.attached? %>
+        </div>
+        <div class="col-md-6 details">
+          <blockquote>
+          <h5><%= "#{@user.firstname}" + " " + "#{@user.lastname}" %></h5>
+          <small><i class="icon-map-marker">D.O.B. : <%= @user.dob.strftime('%v') %></small>
+          </blockquote>
+          <p>
+          <h6><b><%= @user.email %></b></h6>
+          <h6><b>Contact No : <%= @user.contact %></b></h6>
+          </p>
         </div>
       </div>
     </div>
-  </div>  
-  <hr>
-  <%= render partial: '/users/provider', locals: {user: @user} %>
+  </div>
 </div>
 <hr>
 
@@ -43,7 +41,7 @@
   <h5><b>Reviews :</b></h5>
   <hr>
   <div id= "action_cable_comment">
-    <%= render @user.provider.comments %>
+    <%= render @user.comments %>
   </div>
   <hr>
 <% end %>
