@@ -9,4 +9,8 @@ class ProviderDetail < ApplicationRecord
     ProviderDetailBroadcastJob.perform_later(self)
   }
 
+  after_update_commit {
+    ProviderDetailBroadcastJob.perform_later(self)
+  }
+
 end
