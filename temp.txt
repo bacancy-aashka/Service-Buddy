@@ -141,3 +141,45 @@
 ================================================
 <td><button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#reject_order_<%= cart.id.to_s %>">Reject Order</button></td>
 <div id="reject_order_<%= cart.id.to_s %>" class="modal fade" tabindex="-1">
+
+=========================================================
+JAVA SCRIPT :
+-----------------------------
+suppose A =
+
+"<div id=\"provider_detail_11\" >
+  <div class=\"container-fluid\">
+    <div class=\"row\">
+      <div class=\"col-12 mt-3\">
+        <div class=\"card\">
+          <div class=\"card-header\">
+            <b><u>Carpenter</u> :</b>
+          </div>
+          <div class=\"card-horizontal\">
+            <div class=\"img-square-wrapper\">
+              <img style=\"width:200px;height:200px\" src=\"http://example.org/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ca31fa7b8220dd38f6dacc2b492e6d51fcd064cf/imaweges.jpeg\" />
+            </div>
+            <div class=\"card-body\">
+              <p class=\"card-text\"><b>City : dsfs</b></p>
+              <p class=\"card-text\">Name : Digesh Parecha</p>
+              <p class=\"card-text\">zip-code : sfew</p>
+              <p class=\"card-text\">State : dsf</p>
+              <p class=\"card-text\">About: wefw</p>
+            </div>
+          </div>
+          <div class=\"card-footer\">
+            <a class=\"btn btn-secondary btn-sm\" href=\"/provider_details/11\">Contact</a>
+            <a class=\"btn btn-secondary btn-sm\" data-remote=\"true\" href=\"/users/2/msg\">Message here</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>  "
+
+THEN
+
+A.includes('provider_detail_11') => true
+A.find("[provider_detail_11]")
+A.find("[id='provider_detail_6']").length => 1 or 0 if not available.
+A.find("[id='" + D.firstChild.id + "']").length

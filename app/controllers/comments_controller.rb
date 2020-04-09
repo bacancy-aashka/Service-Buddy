@@ -8,7 +8,6 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
     @comment.save
     # ActionCable.server.broadcast "comment_channel", { comment: (render partial: "comments/comment", locals: { comment: @comment }) }   
-    # ActionCable.server.broadcast "comment_channel", comment: @comment   
     redirect_to provider_detail_path(@provider_detail)
   end
 
