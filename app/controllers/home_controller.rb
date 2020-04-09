@@ -20,7 +20,11 @@ class HomeController < ApplicationController
   
   def find_provider_for_city
     category_id = Category.find_by(name: params[:search_input].capitalize)
-    @provider_details= ProviderDetail.where(category_id: category_id.id, city: params[:city])
+    if params[:city] != ""
+     @provider_details= ProviderDetail.where(category_id: category_id.id, city: params[:city])
+    else
+      @provider_details= ProviderDetail.where(category_id: category_id.id)
+    end
   end
 
   def filter_for_cities

@@ -8,11 +8,6 @@ class UsersController < ApplicationController
   def show
   end
 
-  def provider_post_detail
-    @provider = ProviderDetail.find(params[:format])
-   
-  end
-
   private
 
   def set_user

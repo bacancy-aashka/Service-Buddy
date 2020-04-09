@@ -6,7 +6,7 @@
   <p>
     <strong>Comment :</strong>
     <%= comment.body %>
-    <span style="font-size: 10px; color: midnightblue"><i><b> on <%= comment.created_at.strftime('%v') %></b></i></span>
+    <span style="font-size: 10px; color: midnightblue"><i><b> commented on <%= comment.created_at.strftime('%v') %></b></i></span>
   </p>
   <p>
     <% if comment.user_id == current_user.id %>
