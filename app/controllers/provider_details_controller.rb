@@ -70,7 +70,7 @@ class ProviderDetailsController < ApplicationController
   end
 
   def provider_detail_params
-    params.require(:provider_detail).permit(:city, :state, :zipcode, :description, :category_id)
+    params.require(:provider_detail).permit(:city, :state, :zipcode, :description, :category_id, :image)
   end
 
 end
