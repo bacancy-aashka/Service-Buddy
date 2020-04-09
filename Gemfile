@@ -9,7 +9,13 @@ gem 'bootstrap'
 
 gem 'jquery-rails'
 
+gem 'jquery-ui-rails'
+
 gem 'popper_js'
+
+gem 'select2-rails'
+
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.1'

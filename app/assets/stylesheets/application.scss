@@ -35,6 +35,7 @@ ul {
   border-color: #BCE8F1;
   margin: 5px 20px;
   padding: 10px;
+  
 }
 
 .message-received {
@@ -74,4 +75,8 @@ ul {
     background: red;
     color: white;
     margin-left: 1px;
+  }
+
+  .select2-container--bootstrap {
+    display: inline-block !important;
   }

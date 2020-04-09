@@ -21,4 +21,11 @@ document.addEventListener("turbolinks:load", function(){
     $('.refresh').load(window.location.href + ' .refresh');
     $('.refresh_nav').load(window.location.href + ' .refresh_nav');
   }, 5000)); 
+
+  $("#city").select2({
+    allowClear: true,
+    placeholder: 'Select City',
+    theme: "bootstrap",
+    width: '150px'
+  }).val('').trigger('change');
 })
