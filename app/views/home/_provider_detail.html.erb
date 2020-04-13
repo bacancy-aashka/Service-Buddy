@@ -8,7 +8,7 @@
           </div>
           <div class="card-horizontal">
             <div class="img-square-wrapper">
-              <%= image_tag(provider_detail.image, style:'width:200px;height:200px') if provider_detail.image.attached? %>
+              <%= image_tag(provider_detail.image, style:'width:250px;height:250px') if provider_detail.image.attached? %>
             </div>
             <div class="card-body">
               <p class="card-text"><b>City : <%= provider_detail.city %></b></p>
@@ -16,6 +16,7 @@
               <p class="card-text">Zip-code : <%= provider_detail.zipcode %></p>
               <p class="card-text">State : <%= CS.states(:in)[provider_detail.state.to_sym] %></p>
               <p class="card-text">About: <%= provider_detail.description %></p>
+              <p class="card-text">Rating: <%= provider_detail.comments.get_average %><%= image_tag('/assets/star-on.png', style:'width:20px;height:20px;margin-bottom:5px;margin-left:3px') %></p>
             </div>
           </div>
           <div class="card-footer">
@@ -26,4 +27,15 @@
       </div>
     </div>
   </div>
-</div>  
+</div>
+
+<script>
+    $('.star-rating').raty({
+      path: '/assets/',
+      readOnly: true,
+      half: 'true',
+      score: function() {
+            return $(this).attr('data-score');
+    }
+  });
+</script>

@@ -5,9 +5,9 @@
         <h1 class="my-4"><%= @provider_detail.category.name %></h1>
         <div class="list-group">
           <% if @provider_detail.provider.user == current_user %>
-            <%= link_to "Create Profile", new_provider_detail_path, style: 'float: right', class: 'btn btn-info btn-sm' %>
-            <%= link_to 'Edit', edit_provider_detail_path(@provider_detail), class: "btn btn-warning btn-sm" %>
-            <%= link_to 'Delete', provider_detail_path(@provider_detail), method: :delete, class: "btn btn-danger btn-sm" %>
+            <%= link_to "Create Profile", new_provider_detail_path, style: 'float: right', class: 'btn btn-info btn-sm' %><br>
+            <%= link_to 'Edit', edit_provider_detail_path(@provider_detail), class: "btn btn-warning btn-sm" %><br>
+            <%= link_to 'Delete', provider_detail_path(@provider_detail), method: :delete, class: "btn btn-danger btn-sm" %><br>
           <% else %>
             <%= link_to "Message here", user_msg_path(@provider_detail.provider.user), remote: true , class:'btn btn-info btn-sm' %>
           <% end %>          
@@ -17,7 +17,7 @@
         <div class="container">
           <div class="row">
             <div class="col-md-6 img">
-              <%= image_tag(@provider_detail.image, class: "img-rounded", style:"width:200px;height:200px;") if @provider_detail.image.attached? %>
+              <%= image_tag(@provider_detail.image, class: "img-rounded", style:"width:300px;height:300px;") if @provider_detail.image.attached? %>
             </div>
             <div class="col-md-6 details">
               <blockquote>
@@ -26,6 +26,7 @@
               <p>
                 <h5><b><i>Address :</i></b></h5> <h6><%=" #{@provider_detail.city}" + ", " + CS.states(:in)[@provider_detail.state.to_sym] + ", Zip-code: " + "#{@provider_detail.zipcode}" %></h6><hr>
                 <h5><b><i>Description :</i></b></h5> <h6><%= @provider_detail.description %></h6><hr>
+                <h5><b><i>Rating :</i></b></h5> <h6><div class="star-rating" data-score= <%= @provider_detail.comments.get_average %> ></div></h6>
               </p>
             </div>
           </div>
@@ -45,3 +46,13 @@
 </div>
 <% end %>
   
+<script>
+    $('.star-rating').raty({
+      path: '/assets/',
+      readOnly: true,
+      half: 'true',
+      score: function() {
+            return $(this).attr('data-score');
+    }
+  });
+</script>

@@ -3,6 +3,18 @@
     <%= form.text_area :body, placeholder: "Review here", class: "form-control" %>
   <div>
   <div class="form-group" style="margin-top:10px">
+    Rate :<div id="star-rating"></div>
+  </div>
+  <div class="form-group" style="margin-top:10px">
     <%= form.submit %>
   </div>
 <% end %>
+
+<script>
+  $('#star-rating').raty({
+    path: '/assets/',
+    scoreName: 'comment[rating]',
+    half: 'true'
+
+  });
+</script>
