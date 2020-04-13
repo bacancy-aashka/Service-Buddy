@@ -21,7 +21,7 @@
             </div>
             <div class="col-md-6 details">
               <blockquote>
-                <h5><b><%= "#{@provider_detail.provider.user.firstname}" + " " + "#{@provider_detail.provider.user.lastname}" %><b></h5><hr>
+                <h5><b><%= full_name(@provider_detail.provider.user) %><b></h5><hr>
               </blockquote>
               <p>
                 <h5><b><i>Address :</i></b></h5> <h6><%=" #{@provider_detail.city}" + ", " + "#{@provider_detail.state}" + ", Zip-code: " + "#{@provider_detail.zipcode}" %></h6><hr>
