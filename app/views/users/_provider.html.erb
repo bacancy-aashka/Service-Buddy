@@ -1,31 +1,33 @@
 <% if @user.provider %>
-  <% @user.provider.provider_details.each do |provider| %>
+  <% @user.provider.provider_details.each do |provider_detail| %>
     <div class="card">
       <div class="card-header">
-       <b><%= provider.category.name %></b>
+       <b><%= provider_detail.category.name %></b>
       </div>
       <div class="card-horizontal">
         <div class="img-square-wrapper">
-          <%= link_to image_tag(provider.image, style:'width:200px;height:200px') if provider.image.attached? %>
+          <%= link_to image_tag(provider_detail.image, style:'width:200px;height:200px') if provider_detail.image.attached? %>
         </div>
       <div class="card-body">
         <h4 class="card-title">
-        <b><%= provider.category.name %></b>
+        <b><%= provider_detail.category.name %></b>
         </h4>
-        <h5>City: <%= provider.city %></h5>
-        <p class="card-text"> <%= provider.description %></p>
-        <p class="card-text"><i> <%= CS.states(:in)[provider.state.to_sym]  %></i></p>
-        <p class="card-text"><i> <%= provider.zipcode %></i></p>
+        <h5>City: <%= provider_detail.city %></h5>
+        <p class="card-text"> <%= provider_detail.description %></p>
+        <p class="card-text"><i> <%= CS.states(:in)[provider_detail.state.to_sym]  %></i></p>
+        <p class="card-text"><i> <%= provider_detail.zipcode %></i></p>
 
 
       </div>
       </div>
       <div class="card-footer">
-        <%= link_to "Show", provider_detail_path(provider), class:'btn btn-secondary btn-sm' %>
-        <%= link_to 'Edit', edit_provider_detail_path(provider), class: "btn btn-warning btn-sm" %>
-        <%= link_to 'Delete', provider_detail_path(provider), method: :delete, class: "btn btn-danger btn-sm" %>
+        <%= link_to "Show", provider_detail_path(provider_detail), class:'btn btn-secondary btn-sm' %>
+        <%= link_to 'Edit', edit_provider_detail_path(provider_detail), class: "btn btn-warning btn-sm" %>
+        <%= link_to 'Delete', provider_detail_path(provider_detail), method: :delete, class: "btn btn-danger btn-sm" %>
       </div>
     </div><br>
   <% end %>
 <% end %>
+
+
 
