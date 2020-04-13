@@ -1,42 +1,40 @@
 
 <% if user_signed_in? %>
-<%= link_to "Register as a Provider Here", user_path(current_user), method: :get, style: 'float: right; margin-right: 10px', class: 'btn btn-danger sm-btn' %>
+  <%= link_to "Register as a Provider Here", user_path(current_user), method: :get, style: 'float: right; margin-right: 10px', class: 'btn btn-danger sm-btn' %>
 
-<div style="text-align:center;">
-  <%= form_with model:@search, url: find_provider_for_city_home_index_path, remote: true, method: :get do |f| %>
-    <div class="field" style="display:inline-block;" >
-      <%= f.collection_select :city, select_city, :city, :city, include_blank: true %>&nbsp;&nbsp;&nbsp;&nbsp;
-      <%= f.text_field :search_input, placeholder: 'Search category..' %>&nbsp;&nbsp;&nbsp;
-      <%= f.submit "Search", class:"btn btn-primary" %>
-    </div>
-  <%end%>
-</div>
+  <div style="text-align:center;">
+    <%= form_with model:@search, url: find_provider_for_city_home_index_path, remote: true, method: :get do |f| %>
+      <div class="search" style="display:inline-block;" >
+        <%= f.collection_select :city, select_city, :city, :city, include_blank: true %>
+        <%= f.text_field :search_input, placeholder: 'Search category..' %>
+        <%= f.submit "Search", class:"btn btn-primary" %>
+      </div>
+    <%end%>
+  </div>
 
-<br><br>
+  <br><br>
   <div class= "row" style="margin-right: 0px; !important">
     <div class="col-md-2 text-center">
       <h3>
         Category
       </h3>
-        <ul class="list-group">
-          <% @categories.each do |category|%>
-            <li class="list-group-item" ><%= link_to category.name,find_provider_by_category_home_index_path(category),remote:true%> </li>
-          <%end%>
-        </ul>
+      <ul class="list-group">
+        <% @categories.each do |category|%>
+          <li class="list-group-item" ><%= link_to category.name,find_provider_by_category_home_index_path(category),remote:true%> </li>
+        <%end%>
+      </ul>
     </div>
 
     <div class="col-md-6" >
-      <%= render 'provider-details'%>
+      <%= render 'provider_detail_display'%>
     </div>
 
     <div class="col-md-4" id="msg_box">
     </div>
 
   </div>
-
-
 <% else %>
-<strong>Please sign in first </strong>
-<hr>
+  <strong>Please sign in first </strong>
+  <hr>
 <% end %>
     
