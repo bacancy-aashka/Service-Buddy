@@ -1,13 +1,18 @@
 <% if comment.id.present? %>
   <p>
     <strong>Reviewer :</strong>
-    <%= comment.user.firstname %>
+    <%= comment.user.fullname %>
+  </p>
+  <p>
+    <div class="star-rating" data-score= <%= comment.rating %> ></div>
   </p>
   <p>
     <strong>Comment :</strong>
     <%= comment.body %>
     <span style="font-size: 10px; color: midnightblue"><i><b> commented on <%= comment.created_at.strftime('%v') %></b></i></span>
   </p>
+  
+   
   <p>
     <% if comment.user_id == current_user.id %>
       <%= link_to 'Destroy Comment', [comment.provider_detail, comment],
@@ -16,3 +21,14 @@
     <% end %>
   </p><hr>
 <% end %>
+
+<script>
+    $('.star-rating').raty({
+      path: '/assets/',
+      readOnly: true,
+      half: 'true',
+      score: function() {
+            return $(this).attr('data-score');
+    }
+  });
+</script>

@@ -16,7 +16,7 @@ require("bootstrap")
 require ("select2")
 require('popper.js/dist/umd/popper')
 require("packs/address.js")
-
+require ("packs/jquery.raty")
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
