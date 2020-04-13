@@ -66,7 +66,7 @@ class ProviderDetailsController < ApplicationController
   end
   
   def invalid_provider_details
-    redirect_to '/'
+    redirect_to root_path
   end
 
   def provider_detail_params

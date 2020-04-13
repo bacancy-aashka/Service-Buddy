@@ -22,7 +22,7 @@ class UsersController < ApplicationController
 
   def invalid_user
     # logger.error "Attempt to access invalid cart #{params[:id]}"
-    redirect_to '/', notice: "Invalid user"
+    redirect_to root_path, notice: "Invalid user"
   end
   
 end

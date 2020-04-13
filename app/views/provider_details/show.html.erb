@@ -5,9 +5,9 @@
         <h1 class="my-4"><%= @provider_detail.category.name %></h1>
         <div class="list-group">
           <% if @provider_detail.provider.user == current_user %>
-            <%= link_to "Create Profile", new_provider_detail_path, style: 'float: right', class: 'btn btn-info btn-sm' %> &nbsp
-            <%= link_to 'Edit', edit_provider_detail_path(@provider_detail), class: "btn btn-warning btn-sm" %> &nbsp
-            <%= link_to 'Delete', provider_detail_path(@provider_detail), method: :delete, class: "btn btn-danger btn-sm" %> &nbsp
+            <%= link_to "Create Profile", new_provider_detail_path, style: 'float: right', class: 'btn btn-info btn-sm' %>
+            <%= link_to 'Edit', edit_provider_detail_path(@provider_detail), class: "btn btn-warning btn-sm" %>
+            <%= link_to 'Delete', provider_detail_path(@provider_detail), method: :delete, class: "btn btn-danger btn-sm" %>
           <% else %>
             <%= link_to "Message here", user_msg_path(@provider_detail.provider.user), remote: true , class:'btn btn-info btn-sm' %>
           <% end %>          
@@ -21,10 +21,10 @@
             </div>
             <div class="col-md-6 details">
               <blockquote>
-                <h5><b><%= full_name(@provider_detail.provider.user) %><b></h5><hr>
+                <h5><b><%= @provider_detail.provider.user.fullname %><b></h5><hr>
               </blockquote>
               <p>
-                <h5><b><i>Address :</i></b></h5> <h6><%=" #{@provider_detail.city}" + ", " + "#{@provider_detail.state}" + ", Zip-code: " + "#{@provider_detail.zipcode}" %></h6><hr>
+                <h5><b><i>Address :</i></b></h5> <h6><%=" #{@provider_detail.city}" + ", " + CS.states(:in)[@provider_detail.state.to_sym] + ", Zip-code: " + "#{@provider_detail.zipcode}" %></h6><hr>
                 <h5><b><i>Description :</i></b></h5> <h6><%= @provider_detail.description %></h6><hr>
               </p>
             </div>
