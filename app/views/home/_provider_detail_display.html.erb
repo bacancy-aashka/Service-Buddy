@@ -1,7 +1,7 @@
 <div id="provider-detail">
   <% if @provider_details.present? %>
     <% @provider_details.each do |provider_detail| %>
-      <% if provider_detail.provider.user != current_user %> 
+      <% unless provider_detail.provider.user == current_user %> 
         <%= render partial: '/home/provider_detail', locals: { provider_detail: provider_detail } %>
       <% end %>
     <% end %> 

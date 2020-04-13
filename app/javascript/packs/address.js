@@ -23,10 +23,9 @@ document.addEventListener("turbolinks:load", function(){
   }, 5000)); 
 
   $("#city").select2({
-    allowClear: true,
     placeholder: 'Select City',
     theme: "bootstrap",
-    width: '150px'
+    width: '200px'
   }).on("change",function () {
     $.ajax({
         type: "GET",
