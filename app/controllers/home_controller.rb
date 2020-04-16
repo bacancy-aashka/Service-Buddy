@@ -13,6 +13,21 @@ class HomeController < ApplicationController
     add_to_conversations
   end
 
+  def reminder
+    reminder = WorkList.new(title: params[:title], description: params[:description], date: params[:date], provider_id: current_user.provider.id)
+    byebug
+    if reminder.save
+      redirect_to '/'
+    end
+  end
+ 
+  def delete_reminder
+      reminder= WorkList.find(params[:format])
+      if reminder.destroy
+        redirect_to user_path(current_user.id)
+      end
+  end
+
   def find_provider_by_category
     category_id = Category.find(params[:format])
     @provider_details= ProviderDetail.where(category_id: category_id.id)
