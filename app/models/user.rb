@@ -11,26 +11,26 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   # VALIDATION :
-  # validates :firstname, :lastname, presence: true
-  # validate :birth_date_future?
-  # validates :contact, :presence => { :message => 'is not valid' },
-  #                     :numericality => true,
-  #                     :length => { :minimum => 10, :maximum => 15 }
+  validates :firstname, :lastname, presence: true
+  validate :birth_date_future?
+  validates :contact, :presence => { :message => 'is not valid' },
+                      :numericality => true,
+                      :length => { :minimum => 10, :maximum => 15 }
 
   def fullname
     "#{firstname.capitalize} #{lastname.capitalize}"
   end
 
-  # private
+  private
 
-  # def birth_date_future?
-  #   if dob.present?
-  #     if dob > Date.today
-  #       errors.add(:dob, "can't be in the future")
-  #     end
-  #   else
-  #     errors.add(:dob, "can't be blank")
-  #   end  
-  # end
+  def birth_date_future?
+    if dob.present?
+      if dob > Date.today
+        errors.add(:dob, "can't be in the future")
+      end
+    else
+      errors.add(:dob, "can't be blank")
+    end  
+  end
 
 end

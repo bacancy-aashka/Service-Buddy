@@ -3,14 +3,18 @@
     <div class="row">
       <div class="col-12 mt-3">
         <div class="card">
-          <div class="card-header">
-            <b><u><%= provider_detail.category.name %></u> :</b>
+          <div class="card-header card_side card_side--front">
+            <b><u>
+              <h4 class="card_heading">
+              <span class="card_heading-span card_heading-span--3"><%= provider_detail.category.name %></span>
+              </h4>
+            </u> :</b>
           </div>
           <div class="card-horizontal">
-            <div class="img-square-wrapper">
+            <div class="img-square-wrapper card_picture card_picture--3">
               <%= image_tag(provider_detail.image, style:'width:250px;height:250px') if provider_detail.image.attached? %>
             </div>
-            <div class="card-body">
+            <div class="card-body card_details">
               <p class="card-text"><b>City : <%= provider_detail.city %></b></p>
               <p class="card-text">Name : <%= provider_detail.provider.user.fullname %></p>
               <p class="card-text">Zip-code : <%= provider_detail.zipcode %></p>
@@ -19,9 +23,9 @@
               <p class="card-text">Rating: <%= provider_detail.comments.get_average %><%= image_tag('/assets/star-on.png', style:'width:20px;height:20px;margin-bottom:5px;margin-left:3px') %></p>
             </div>
           </div>
-          <div class="card-footer">
-            <%= link_to "Contact", provider_detail_path(provider_detail), class:'btn btn-secondary btn-sm' %>
-            <%= link_to "Message here", user_msg_path(provider_detail.provider.user), remote: true , class:'btn btn-secondary btn-sm' %>
+          <div class="card_side card_side--back card_side--back-3 vertical_align">
+            <%= link_to "Contact", provider_detail_path(provider_detail), class:'btn btn-light btn-lg btn-center' %>
+            <%= link_to "Message here", user_msg_path(provider_detail.provider.user), remote: true , class:'btn btn-light btn-lg btn-center' %>
           </div>
         </div>
       </div>

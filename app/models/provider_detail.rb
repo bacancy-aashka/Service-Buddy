@@ -5,9 +5,9 @@ class ProviderDetail < ApplicationRecord
   has_one_attached :image, dependent: :destroy
 
   # VALIDATION :
-  # validates :city, :state, presence: true
-  # validates :description, length: {minimum: 200}
-  # validates :zipcode, numericality: true
+  validates :city, :state, presence: true
+  validates :description, length: {minimum: 200}
+  validates :zipcode, numericality: true
 
 
   after_create_commit {
