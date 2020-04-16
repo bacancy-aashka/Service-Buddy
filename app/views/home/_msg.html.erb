@@ -17,12 +17,12 @@
           <textarea name="body" class="form-control"></textarea><br/>
           <input type="submit" class="btn btn-success" value="Send">
         </form>
-        <% if current_user.provider%>
-          <a href="#reminder"  class="text-red ml-auto btn btn-primary" data-toggle="modal">Reminder</a>
-        <% end  %>
     </div>
+    <% if current_user.provider%>
+    <a href="#reminder"  class="text-red ml-auto btn btn-primary" data-toggle="modal">Reminder</a>
+  <% end  %>
   </div>
-
+  
    <div id="reminder" class="modal fade" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">

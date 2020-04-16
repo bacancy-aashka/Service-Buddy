@@ -5,7 +5,7 @@
       <div class="list-group">
         <% if current_user == @user %>
           <%= link_to "Create Profile", new_provider_detail_path, style: 'float: right', class: 'btn btn-danger sm-btn' %><br/>
-          <a href="#reminder"  class=" btn btn-success sm-btn" data-toggle="modal">Reminder</a>
+          <a href="#reminder"  class=" btn btn-success sm-btn" data-toggle="modal">Reminder</a><br/>
         <% end %>
           <%= link_to 'Back', root_path, class: "btn btn-secondary sm-btn" %>
           
@@ -38,8 +38,8 @@
 </div>
 
 <div id="reminder" class="modal fade" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content" >
                 <div class="modal-header">
                     <h5 class="modal-title"> Reminders</h5>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -56,7 +56,7 @@
                         <% @reminders.each do |reminder| %>
                         <tr>
                           <td><%= reminder.title %></td>
-                          <td><%= reminder.date %></td>
+                          <td><%= reminder.date.strftime("%a, %d-%b-%Y:  %I:%M %p") %></td>
                           <td><%= reminder.description %></td>
                           <td><%= link_to "Delete",delete_reminder_home_index_path(reminder),class:'btn btn-primary',method: :delete %></td>
                         </tr>

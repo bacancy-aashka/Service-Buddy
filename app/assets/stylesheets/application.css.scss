@@ -234,7 +234,7 @@
     position: fixed;
     bottom: -5px;
     right: -18px;
-    z-index: 9;
+    z-index:1041;
     width: 500px;
     .messages-list {
       max-height: 300px;
@@ -242,7 +242,6 @@
       ul li .row .message-sent {
         max-width: 100px;
         border-radius: 20px;
-        position: relative;
         background-color: #D9EDF7;
         border-color: #BCE8F1;
         margin: 5px 20px;
@@ -258,6 +257,7 @@
         padding: 5px 15px;
       }
     }
+
 
   }
 
@@ -276,4 +276,10 @@
     display:flex;
     justify-content:center;
     align-items:center;
+  }
+
+  .img-square-wrapper{
+    min-width: 300px;
+    max-height: 300px;
+
   }
