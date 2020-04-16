@@ -152,8 +152,9 @@
       .card_heading-span--3 {
         background-image: linear-gradient(to right bottom, rgba(41, 152, 255, 0.85), rgba(86, 67, 250, 0.85)); }
     .card_details {
-      padding: 1rem 8rem;
+      padding: 1rem 6rem;
       width: 80%;
+      word-break: break-all;
       margin: 0 auto; }
       
   
@@ -234,7 +235,7 @@
     position: fixed;
     bottom: -5px;
     right: -18px;
-    z-index: 9;
+    z-index:1041;
     width: 500px;
     .messages-list {
       max-height: 300px;
@@ -242,7 +243,6 @@
       ul li .row .message-sent {
         max-width: 100px;
         border-radius: 20px;
-        position: relative;
         background-color: #D9EDF7;
         border-color: #BCE8F1;
         margin: 5px 20px;
@@ -258,6 +258,7 @@
         padding: 5px 15px;
       }
     }
+
 
   }
 
@@ -276,4 +277,10 @@
     display:flex;
     justify-content:center;
     align-items:center;
+  }
+
+  .img-square-wrapper{
+    min-width: 300px;
+    max-height: 300px;
+
   }

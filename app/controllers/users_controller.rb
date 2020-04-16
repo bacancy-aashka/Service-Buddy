@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_user
 
   def show
+    @reminders = WorkList.where(provider_id: current_user.provider.id)
   end
 
   private
