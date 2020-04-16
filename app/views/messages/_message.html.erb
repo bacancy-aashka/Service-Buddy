@@ -1,8 +1,11 @@
 <li>
   <div class="row">
-    <div class="<%= user.id == message.user_id ? 'message-sent' : 'message-received' %>">
-      <div style="font-size: 12px; margin=0px;"><%= message.user.firstname %></div>
-      <hr style=" padding: 0 !important; margin: 0 !important;">
+    <div class="<%= user.id == message.user_id ? 'message-sent ml-auto' : 'message-received' %>">
+      <div class="row">
+        <div class="chat_name"><%= message.user.firstname %></div>
+        <div class="chat_time ml-auto mr-3"><%= message.created_at.strftime('%R') %></div>
+      </div>
+      <hr>
       <div style="font-size: 15px; margin=0px;"><%= message.body %></div>
     </div>
   </div>

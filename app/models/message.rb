@@ -3,7 +3,7 @@ class Message < ApplicationRecord
   belongs_to :conversation
 
   # VALIDATION :
-  # validates :body, presence: true
+  validates :body, presence: true
 
   after_create_commit { MessageBroadcastJob.perform_later(self) }
   after_create_commit :read_previous
