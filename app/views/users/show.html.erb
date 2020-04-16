@@ -58,6 +58,7 @@
                           <td><%= reminder.title %></td>
                           <td><%= reminder.date %></td>
                           <td><%= reminder.description %></td>
+                          <td><%= link_to "Delete",delete_reminder_home_index_path(reminder),class:'btn btn-primary',method: :delete %></td>
                         </tr>
                         <%end%>
                       </tbody>

@@ -18,10 +18,14 @@ class HomeController < ApplicationController
     byebug
     if reminder.save
       redirect_to '/'
-    else
-      
     end
-   
+  end
+ 
+  def delete_reminder
+      reminder= WorkList.find(params[:format])
+      if reminder.destroy
+        redirect_to user_path(current_user.id)
+      end
   end
 
   def find_provider_by_category

@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       get 'find_provider_by_category'
       get 'filter_for_cities'
       post 'reminder'
+      delete 'delete_reminder'
     end
   end 
 
