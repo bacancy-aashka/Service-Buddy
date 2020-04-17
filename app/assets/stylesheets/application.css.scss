@@ -46,7 +46,7 @@
    a{
      color: whitesmoke;
    }
-   input[type=submit]{
+   input[type=submit], .reminder-btn{
      color: black;
     background: rgb(105,155,200);
     background: -webkit-radial-gradient(top left, ellipse cover, rgba(105,155,200,1) 0%,rgba(181,197,216,1) 57%);
@@ -152,7 +152,8 @@
       .card_heading-span--3 {
         background-image: linear-gradient(to right bottom, rgba(41, 152, 255, 0.85), rgba(86, 67, 250, 0.85)); }
     .card_details {
-      padding: 1rem 6rem;
+      padding: 1rem 8rem;
+      padding-right: 2rem;
       width: 80%;
       word-break: break-all;
       margin: 0 auto; }

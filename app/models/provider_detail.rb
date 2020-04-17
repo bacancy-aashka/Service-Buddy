@@ -6,7 +6,7 @@ class ProviderDetail < ApplicationRecord
 
   # VALIDATION :
   validates :city, :state, presence: true
-  validates :description, length: {minimum: 50}
+  validates :description, length: {minimum: 60}
   validates :zipcode, numericality: true
 
 

@@ -5,7 +5,9 @@
       <div class="list-group">
         <% if current_user == @user %>
           <%= link_to "Create Profile", new_provider_detail_path, style: 'float: right', class: 'btn btn-danger sm-btn' %><br/>
-          <a href="#reminder"  class=" btn btn-success sm-btn" data-toggle="modal">Reminder</a><br/>
+          <% if current_user.provider%>
+            <a href="#reminder"  class=" btn btn-success sm-btn" data-toggle="modal">Reminder</a><br/>
+          <% end%>
         <% end %>
           <%= link_to 'Back', root_path, class: "btn btn-secondary sm-btn" %>
           
@@ -36,8 +38,8 @@
   <hr>
   <%= render partial: '/users/provider', locals: {user: @user} %>
 </div>
-
-<div id="reminder" class="modal fade" tabindex="-1">
+<% if current_user.provider%>
+  <div id="reminder" class="modal fade" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content" >
                 <div class="modal-header">
@@ -71,3 +73,4 @@
             </div>
         </div>
   </div>
+<% end%>
