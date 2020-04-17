@@ -25,7 +25,7 @@
               </blockquote>
               <p>
                 <h5><b><i>Address :</i></b></h5> <h6><%=" #{@provider_detail.city}" + ", " + CS.states(:in)[@provider_detail.state.to_sym] + ", Zip-code: " + "#{@provider_detail.zipcode}" %></h6><hr>
-                <h5><b><i>Description :</i></b></h5> <h6><%= @provider_detail.description %></h6><hr>
+                <h5><b><i>Description :</i></b></h5> <h6 style="text-align: justify; text-justify: inter-word;"><%= @provider_detail.description %></h6><hr>
                 <h5><b><i>Rating :</i></b></h5> <h6><div class="star-rating" data-score= <%= @provider_detail.comments.get_average %> ></div></h6>
               </p>
             </div>
