@@ -21,6 +21,12 @@ class User < ApplicationRecord
     "#{firstname.capitalize} #{lastname.capitalize}"
   end
 
+  def self.mail_for_today
+    user = User.first
+    DailyAppointmentsMailer.mail_to_providers(user).deliver_now
+  end
+
+
   # private
 
   # def birth_date_future?

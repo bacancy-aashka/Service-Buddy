@@ -31,5 +31,5 @@
     </div>
   </div>
   <hr>
-  <%= render partial: '/users/provider', locals: {user: @user} %>
+  <%= render partial: '/users/provider', locals: {provider_details: only_confirmed_provider_details(@user)} %>
 </div>

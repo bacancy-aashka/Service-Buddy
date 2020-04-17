@@ -1,148 +1,3 @@
-<p>
-    <strong>City: </strong>
-    <%= @user.providers.provider_detail.city %>
-  </p>
-  
-  <p>
-    <strong>State: </strong>
-    <%= @user.providers.provider_detail.state %>
-  </p>
-  
-  <p>
-    <strong>Pin Code: </strong>
-    <%= @user.providers.provider_detail.zipcode %>
-  </p>
-
-  <p>
-    <strong>About: </strong>
-    <%= @user.providers.provider_details.category.name %>
-  </p>
-  
-  <p>
-    <strong>About: </strong>
-    <%= @user.providers.provider_detail.description %>
-  </p>
-
-  ============================================
-
-  <% if @user.provider %>
-  <% @user.provider.provider_details.each do |provider| %>
-    <div class="col-sm-12">
-      <div class="card h-100">
-        <div class="card-body">
-          <h4 class="card-title">
-          <%= provider.category.name %>
-          </h4>
-          <h5>City: <%= provider.city %></h5>
-          <p class="card-text"> <%= provider.description %></p>
-          <p class="card-text"><i> <%= provider.state %></i></p>
-          <p class="card-text"><i> <%= provider.zipcode %></i></p>
-        </div>
-        <div class="card-footer">
-          <% if current_user == @user %>
-            <%= link_to 'Edit', edit_provider_detail_path(provider), class: "btn btn-warning sm-btn" %>
-            <%= link_to 'Delete', provider_detail_path(provider), method: :delete, class: "btn btn-danger sm-btn" %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  <% end %>
-<% end %>
-
-=====================================
-
-<% if @user.provider %>
-  <% @user.provider.provider_details.each do |provider| %>
-    <div class="card">
-      <div class="card-header">
-        Featured
-      </div>
-        <div class="card-body">
-          <h4 class="card-title">
-          <%= provider.category.name %>
-          </h4>
-          <h5>City: <%= provider.city %></h5>
-          <p class="card-text"> <%= provider.description %></p>
-          <p class="card-text"><i> <%= provider.state %></i></p>
-          <p class="card-text"><i> <%= provider.zipcode %></i></p>
-        </div>
-        <div class="card-footer">
-          <% if current_user == @user %>
-            <%= link_to 'Edit', edit_provider_detail_path(provider), class: "btn btn-warning sm-btn" %>
-            <%= link_to 'Delete', provider_detail_path(provider), method: :delete, class: "btn btn-danger sm-btn" %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  <% end %>
-<% end %>
-
-===================================
-
-<div class="detailBox">
-    <div class="titleBox">
-      <label>Comment Box</label>
-    </div>
-    <div class="commentBox">
-        
-        <p class="taskDescription">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-    </div>
-
-    <div class="actionBox">
-        <ul class="commentList">
-            <li>
-                <div class="commenterImage">
-                  <img src="http://placekitten.com/50/50" />
-                </div>
-                <div class="commentText">
-                <p class="">Hello this is a test comment.</p> <span class="date sub-text">on March 5th, 2014</span>
-                </div>
-            </li>
-  
-        </ul>
-    </div>
-</div>
-
-==============================================
-
- $: 'jquery/src/jquery',
-    jQuery: 'jquery/src/jquery',
-
-=============================================================================================================================
-<%= render partial: '/users/provider', locals: {user: @user} %>
-  <% if @user.provider.present? %>
-    <% unless @user == current_user %>
-      <h5><b>Give Review:</b></h5><hr>
-      <%= render 'comments/form', locals: {user: @user} %><hr>
-    <% end %>
-    <h5><b>Reviews :</b></h5>
-    <hr>
-    <div id= "action_cable_comment">
-      <%= render @user.provider.comments %>
-    </div>  
-    <hr>
-<% end %>
-==================================
-  <span style="font-size: 10px; color: midnightblue"><i><b> on <%= comment.created_at.strftime('%v') %></b></i></span>
-=================================================
- respond_to do |format|
-            if @book.save
-              @book_seller = BookSeller.new(seller_id: current_user.id, book_id: @book.id)
-              # @book_seller.seller_id = current_user.id
-              # @book_seller.book_id = @book.id
-              @book_seller.save
-              format.html { redirect_to book_path(@book, @book_seller), notice: 'Book was successfully created.' }
-              format.json { render :show, status: :created, location: @book }
-            else
-              format.html { render :new }
-              format.json { render json: @book.errors, status: :unprocessable_entity }
-            end
-          end
-================================================
-<td><button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#reject_order_<%= cart.id.to_s %>">Reject Order</button></td>
-<div id="reject_order_<%= cart.id.to_s %>" class="modal fade" tabindex="-1">
-
-=========================================================
 JAVA SCRIPT :
 -----------------------------
 suppose A =
@@ -183,3 +38,17 @@ A.includes('provider_detail_11') => true
 A.find("[provider_detail_11]")
 A.find("[id='provider_detail_6']").length => 1 or 0 if not available.
 A.find("[id='" + D.firstChild.id + "']").length
+
+=========================================================================================
+cron steps => 
+
+1. gem 'whenever', require: false
+2. "bundle exec wheneverize ." to create schedule.rb in config folder.
+3. Write code in that.
+3. Run " whenever --update-crontab --set environment='development' " for development environment otherwise run " bundle exec whenever --update-crontab "
+4. Display crontab: " crontab -l "
+5. To update crontab run " whenever --update-crontab "
+6. Wipe crontab of your " whenever task: bundle exec whenever --clear-crontab "
+
+=================================================================
+From 1st => Desc-1
