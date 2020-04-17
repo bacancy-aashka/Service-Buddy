@@ -5,7 +5,17 @@ class DailyAppointmentsMailer < ApplicationMailer
   #
   #   en.daily_appointments_mailer.mail_to_providers.subject
   #
-  def mail_to_providers(user)
-    mail to: user.email, subject: 'Your today\'s appointments.'
+
+  def mail_to_providers(providers)
+    providers.each do |provider|
+      if provider.work_lists.present?
+      @work_lists = provider.work_lists.where(date: Date.today)
+        @work_lists.each do |list|
+          puts "#{list.provider.user.email} #{list.title} #{list.description}"
+        end
+      # mail to: provider.user.email, subject: 'Your today\'s appointments.'
+      end
+    end
   end
+
 end
