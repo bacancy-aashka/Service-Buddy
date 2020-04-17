@@ -1,3 +1,6 @@
+$(document).on('turbolinks:before-cache', function() {
+  $('#city').select2('destroy');
+} );
 document.addEventListener("turbolinks:load", function(){
   var state = document.getElementById("provider_detail_state");
   var city = document.getElementById("provider_detail_city");

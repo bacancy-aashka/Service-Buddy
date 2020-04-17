@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
    
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
 
   def index
     @provider_details = ProviderDetail.where(email_confirmed: true)
@@ -11,6 +11,21 @@ class HomeController < ApplicationController
     @conversation = Conversation.get(current_user.id, params[:user_id])
     Conversation.read_message(@conversation.id, current_user.id)
     add_to_conversations
+  end
+
+  def reminder
+    reminder = WorkList.new(title: params[:title], description: params[:description], date: params[:date], provider_id: current_user.provider.id)
+    # byebug
+    if reminder.save
+      redirect_to '/'
+    end
+  end
+ 
+  def delete_reminder
+      reminder= WorkList.find(params[:format])
+      if reminder.destroy
+        redirect_to user_path(current_user.id)
+      end
   end
 
   def find_provider_by_category
