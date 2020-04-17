@@ -15,9 +15,8 @@ class HomeController < ApplicationController
 
   def reminder
     reminder = WorkList.new(title: params[:title], description: params[:description], date: params[:date], provider_id: current_user.provider.id)
-    # byebug
     if reminder.save
-      redirect_to '/'
+      redirect_to root_path
     end
   end
  
