@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_15_073303) do
+ActiveRecord::Schema.define(version: 2020_04_16_102105) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -80,6 +80,8 @@ ActiveRecord::Schema.define(version: 2020_04_15_073303) do
     t.integer "provider_id"
     t.integer "category_id"
     t.text "description"
+    t.boolean "email_confirmed", default: false
+    t.string "confirm_token"
     t.index ["category_id"], name: "index_provider_details_on_category_id"
     t.index ["provider_id"], name: "index_provider_details_on_provider_id"
   end

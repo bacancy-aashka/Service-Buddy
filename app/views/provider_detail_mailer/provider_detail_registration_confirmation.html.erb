@@ -1,0 +1,22 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 mt-3">
+      <div class="card">
+        <div class="card-header">
+          <b><u><%= @provider_detail.category.name %></u> :</b>
+        </div>
+        <div class="card-horizontal">
+          <div class="card-body">
+            <p class="card-text"><b>City : <%= @provider_detail.city %></b></p>
+            <p class="card-text">Name : <%= @provider_detail.provider.user.fullname %></p>
+            <p class="card-text">Zip-code : <%= @provider_detail.zipcode %></p>
+            <p class="card-text">State : <%= CS.states(:in)[@provider_detail.state.to_sym] %></p>
+            <p class="card-text">About: <%= @provider_detail.description %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%=  link_to "Confirm your registration here", confirm_email_provider_details_url(@provider_detail.confirm_token, host: "http://localhost:3000")%>

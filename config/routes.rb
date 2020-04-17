@@ -23,6 +23,8 @@ Rails.application.routes.draw do
   resources :categories
   
   resources :provider_details do
+    get ':token/confirm_email',on: :collection, action: :confirm_email, as: :confirm_email
+
     resources :comments
   end
 

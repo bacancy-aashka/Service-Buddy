@@ -1,5 +1,5 @@
-<% if @user.provider %>
-  <% @user.provider.provider_details.each do |provider_detail| %>
+<% if provider_details.present? %>
+  <% provider_details.each do |provider_detail| %>
     <div class="card">
       <div class="card-header card_side card_side--front">
        <b>
@@ -40,7 +40,7 @@
       readOnly: true,
       half: 'true',
       score: function() {
-            return $(this).attr('data-score');
+        return $(this).attr('data-score');
     }
   });
 </script>

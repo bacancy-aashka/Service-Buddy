@@ -3,7 +3,7 @@ class HomeController < ApplicationController
   # before_action :authenticate_user!
 
   def index
-    @provider_details = ProviderDetail.all
+    @provider_details = ProviderDetail.where(email_confirmed: true)
     @categories= Category.all
   end
 
