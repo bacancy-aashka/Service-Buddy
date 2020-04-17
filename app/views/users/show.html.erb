@@ -53,12 +53,13 @@
                         <th>Title</th>
                         <th>Date</th>
                         <th>Description</th>
+                        <th></th>
                       </tr>
                       <tbody>
                         <% @reminders.each do |reminder| %>
                         <tr>
                           <td><%= reminder.title %></td>
-                          <td><%= reminder.date.strftime("%a, %d-%b-%Y:  %I:%M %p") %></td>
+                          <td><%= reminder.date %></td>
                           <td><%= reminder.description %></td>
                           <td><%= link_to "Delete",delete_reminder_home_index_path(reminder),class:'btn btn-primary',method: :delete %></td>
                         </tr>

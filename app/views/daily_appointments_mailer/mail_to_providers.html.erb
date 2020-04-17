@@ -1,5 +1,15 @@
-<h1>DailyAppointments#mail_to_providers</h1>
-
-<p>
-  <%= @greeting %>, find me in app/views/daily_appointments_mailer/mail_to_providers.html.erb
-</p>
+<h1><i>Your Daily Appointments</i></h1><hr>
+<table class="table">
+  <thead class="thead-dark">    
+    <th>Title</th>
+    <th>Description</th>
+  </thead>
+  <tbody>
+    <% @work_lists.each do |work_list| %>
+      <tr>
+        <td><%= work_list.title %></td>
+        <td><%= work_list.description %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table><hr>
