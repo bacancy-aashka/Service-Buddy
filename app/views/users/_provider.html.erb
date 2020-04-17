@@ -17,7 +17,7 @@
         <b><%= provider_detail.category.name %></b>
         </h4>
         <h5>City: <%= provider_detail.city %></h5>
-        <p class="card-text"> <%= provider_detail.description %></p>
+        <p class="card-text"> <%= provider_detail.description.truncate_words(15) %></p>
         <p class="card-text"><i> <%= CS.states(:in)[provider_detail.state.to_sym]  %></i></p>
         <p class="card-text"><i> <%= provider_detail.zipcode %></i></p>
         <p class="card-text"><div class="star-rating" data-score= <%= provider_detail.comments.get_average %> ></div></p>
