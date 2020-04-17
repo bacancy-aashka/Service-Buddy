@@ -25,7 +25,7 @@
 /public/assets
 .byebug_history
 
-/config/environments/development.rb
+/config/locales/en.yml
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
@@ -41,3 +41,4 @@ yarn-debug.log*
 /database.yml
 Gemfile.lock
 temp.txt
+
