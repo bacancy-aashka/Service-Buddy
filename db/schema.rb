@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_20_082838) do
+ActiveRecord::Schema.define(version: 2020_04_20_114006) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -117,6 +117,8 @@ ActiveRecord::Schema.define(version: 2020_04_20_082838) do
     t.boolean "status", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "category_id"
+    t.index ["category_id"], name: "index_work_lists_on_category_id"
     t.index ["provider_id"], name: "index_work_lists_on_provider_id"
   end
 
@@ -128,4 +130,5 @@ ActiveRecord::Schema.define(version: 2020_04_20_082838) do
   add_foreign_key "provider_details", "categories"
   add_foreign_key "provider_details", "providers"
   add_foreign_key "providers", "users"
+  add_foreign_key "work_lists", "categories"
 end

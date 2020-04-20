@@ -14,7 +14,7 @@ class HomeController < ApplicationController
   end
 
   def reminder
-    reminder = WorkList.new(title: params[:title], description: params[:description], date: params[:date], provider_id: current_user.provider.id)
+    reminder = WorkList.new(title: params[:title], description: params[:description], date: params[:date], provider_id: current_user.provider.id, category_id: params[:category_id])
     if reminder.save
       redirect_to user_path(current_user), notice: 'Reminder is successfully added.' 
     else 
