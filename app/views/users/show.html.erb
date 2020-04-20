@@ -51,6 +51,7 @@
           <table class="table">
             <thead class="thead-dark">
               <tr>
+                <th>For</th>
                 <th>Title</th>
                 <th>Date</th>
                 <th>Description</th>
@@ -60,6 +61,7 @@
               <tbody>
                 <% @reminders.each do |reminder| %>
                 <tr>
+                  <td><%= reminder.category.name %></td>
                   <td><%= reminder.title %></td>
                   <td><%= reminder.date %></td>
                   <td><%= reminder.description %></td>
