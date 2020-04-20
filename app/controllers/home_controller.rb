@@ -16,14 +16,27 @@ class HomeController < ApplicationController
   def reminder
     reminder = WorkList.new(title: params[:title], description: params[:description], date: params[:date], provider_id: current_user.provider.id)
     if reminder.save
-      redirect_to root_path
+      redirect_to user_path(current_user), notice: 'Reminder is successfully added.' 
+    else 
+      redirect_to user_path(current_user), notice: 'Reminder is failed to add.'
+    end
+  end
+
+  def reminder_status
+    reminder = WorkList.find(params[:id])
+    if reminder.update(status: true)
+      redirect_to user_path(current_user), notice: 'Reminder\'s status is successfully updated.'
+    else
+      redirect_to user_path(current_user), notice: 'Reminder\'s status is failed to updated.'
     end
   end
  
   def delete_reminder
       reminder= WorkList.find(params[:format])
       if reminder.destroy
-        redirect_to user_path(current_user.id)
+        redirect_to user_path(current_user), notice: 'Reminder is successfully deleted.' 
+      else 
+        redirect_to user_path(current_user), notice: 'Reminder is failed to delete.'
       end
   end
 
