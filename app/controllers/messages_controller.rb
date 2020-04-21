@@ -3,14 +3,12 @@ class MessagesController < ApplicationController
   
   def create
     @message = Message.new(message_params)
-
     if @message.save!
       redirect_to root_path
     else
       flash[danger]="Failed To Send Message"
       redirect_to root_path
     end
-  
   end
 
   private

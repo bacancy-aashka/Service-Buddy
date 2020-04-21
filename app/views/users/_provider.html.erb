@@ -21,8 +21,6 @@
         <p class="card-text"><i> <%= CS.states(:in)[provider_detail.state.to_sym]  %></i></p>
         <p class="card-text"><i> <%= provider_detail.zipcode %></i></p>
         <p class="card-text"><div class="star-rating" data-score= <%= provider_detail.comments.get_average %> ></div></p>
-
-
       </div>
       </div>
       <div class="card-footer card_side card_side--back card_side--back-3 vertical_align">
@@ -35,12 +33,12 @@
 <% end %>
 
 <script>
-    $('.star-rating').raty({
-      path: '/assets/',
-      readOnly: true,
-      half: 'true',
-      score: function() {
-        return $(this).attr('data-score');
+  $('.star-rating').raty({
+    path: '/assets/',
+    readOnly: true,
+    half: 'true',
+    score: function() {
+      return $(this).attr('data-score');
     }
   });
 </script>

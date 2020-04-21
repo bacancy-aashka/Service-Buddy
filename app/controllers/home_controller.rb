@@ -55,7 +55,6 @@ class HomeController < ApplicationController
     render json: { provider_detail:render_to_string('home/_provider_details', layout:false, locals: { provider_details: @provider_details }) }
   end
 
-
   private
 
   def add_to_conversations
