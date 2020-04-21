@@ -10,8 +10,6 @@
           <% end%>
         <% end %>
           <%= link_to 'Back', root_path, class: "btn btn-secondary sm-btn" %>
-          
-
       </div>
     </div>
 
@@ -36,7 +34,11 @@
     </div>
   </div>
   <hr>
-  <%= render partial: '/users/provider', locals: {provider_details: only_confirmed_provider_details(@user)} %>
+  <% if @user.provider.present? %>
+    <%= render partial: '/users/provider', locals: {provider_details: only_confirmed_provider_details(@user)} %>
+  <% else %>
+    <h3>Not registration as provider yet...</h3>
+  <% end %>
 </div>
 
 <% if current_user.provider%>

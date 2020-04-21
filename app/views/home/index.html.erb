@@ -1,6 +1,4 @@
-
 <% if user_signed_in? %>
-
   <%= link_to "Register as a Provider Here", user_path(current_user), method: :get, style: 'float: right; margin-right: 10px', class: 'btn btn-danger sm-btn' %>
 
   <div style="text-align:center;">
@@ -10,9 +8,8 @@
         <%= f.text_field :search_input, placeholder: 'Search category..' %>
         <%= f.submit "Search", class:"btn btn-primary" %>
       </div>
-    <%end%>
+    <% end %>
   </div>
-
   <br><br>
   <div class= "row" style="margin-right: 0px; !important">
     <div class="col-md-2 text-center">
@@ -25,21 +22,12 @@
         <%end%>
       </ul>
     </div>
-
     <div class="col-md-6" >
       <%= render 'provider_details' %>
     </div>
-
     <div class="col-md-4 inbox-msg" id="msg_box">
     </div>
   </div>
-
-    
-
-
-
-
-
 <% else %>
   <strong>Please sign in first </strong>
   <hr>

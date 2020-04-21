@@ -1,11 +1,9 @@
 class CategoriesController < ApplicationController
 
-  # before_action :check_user
   before_action :authenticate_user! 
   before_action :set_category, only: %i[edit update destroy]
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_category
 
-  
   def index
     @categories = Category.all
   end
@@ -52,15 +50,6 @@ class CategoriesController < ApplicationController
     # logger.error "Attempt to access invalid cart #{params[:id]}"
     redirect_to '/', notice: "Invalid category"
   end
-
-
-  # def check_user
-  #   if current_user.admin?
-  #     true
-  #   else
-  #     false
-  #   end
-  # end
 
 end
 

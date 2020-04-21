@@ -5,9 +5,11 @@ module HomeHelper
 
     def set_categories(user)
       @categories = []
-      user.provider.provider_details.each do |provider_detail|
-        category = provider_detail.category
-        @categories.push(category)
+      if user.provider.present?
+        user.provider.provider_details.each do |provider_detail|
+          category = provider_detail.category
+          @categories.push(category)
+        end
       end
       @categories.to_a
     end

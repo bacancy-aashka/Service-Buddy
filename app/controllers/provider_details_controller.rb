@@ -5,7 +5,6 @@ class ProviderDetailsController < ApplicationController
   before_action :check_provider, only: %i[edit]
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_provider_details
 
-
   def new
     @provider_detail = ProviderDetail.new
   end
