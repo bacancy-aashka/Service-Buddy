@@ -34,16 +34,32 @@
       </div>
     </div>
     <div class="col-md-12" id="msg_box"></div>
-  <hr>
-  <% unless @provider_detail.provider.user == current_user %>
-    <h5><b>Give Review:</b></h5><hr>
-    <%= render 'comments/form' %><hr>
-  <% end %>
-  <h5><b>Reviews :</b></h5><hr>
-  <div id= "action_cable_comment">
-    <%= render @provider_detail.comments %>
-  </div>  
-</div>
+
+    <% if @provider_detail.provider.user == current_user %>
+      <hr><h3>Graphical Analysis</h3><hr>
+      <% if @provider_detail.provider.work_lists.present? %>
+        <%= form_tag( provider_detail_path(@provider_detail), method: :get, remote: false, class:'md-form mr-auto mb-4 ml-5') do %>
+          <%= text_field_tag :min_date, params[:min_date], placeholder: "start date (dd-mm-yyyy)", class: 'form-control' %><br>
+          <%= text_field_tag :max_date, params[:max_date], placeholder: "End date (dd-mm-yyyy)", class: 'form-control' %><br>
+          <button class="btn btn-dark" type="submit">Search</button>
+        <% end %>
+        <hr>
+        <%= column_chart @work_list_graph %>
+      <% else %>
+        <h3 style=" text-align: center;">Data not available for graph yet</h3>
+      <% end %>
+      <hr>
+    <% else %>
+      <h5><b>Give Review:</b></h5><hr>
+      <%= render 'comments/form' %><hr>
+    <% end %>
+
+    <h5><b>Reviews :</b></h5><hr>
+    <div id= "action_cable_comment">
+      <%= render @provider_detail.comments %>
+    </div> 
+     
+  </div>
 <% end %>
   
 <script>

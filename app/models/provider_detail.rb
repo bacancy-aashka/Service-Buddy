@@ -8,6 +8,7 @@ class ProviderDetail < ApplicationRecord
   validates :city, :state, presence: true
   # validates :description, length: {minimum: 60}
   validates :zipcode, numericality: true
+  validates_uniqueness_of :category_id, scope: [:provider_id]
 
 
   # after_create_commit {
