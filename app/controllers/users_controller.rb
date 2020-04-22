@@ -6,8 +6,9 @@ class UsersController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_user
 
   def show
-    if current_user.provider
+    if @user.provider
       @reminders = WorkList.where(provider_id: current_user.provider.id)
+      @work_list_graph = WorkList.all_provider_detail_graph(params, @user)
     end
   end
 

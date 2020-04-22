@@ -10,6 +10,7 @@ class ProviderDetailsController < ApplicationController
   end
   
   def show
+    @work_list_graph = WorkList.individual_provider_detail_graph(params, @provider_detail)
   end
 
   def index

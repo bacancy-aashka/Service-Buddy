@@ -51,4 +51,4 @@ cron steps =>
 6. Wipe crontab of your " whenever task: bundle exec whenever --clear-crontab "
 
 =================================================================
-From 1st => Desc-1
+From 1st => Desc-1, Chart with js.erb not working.
