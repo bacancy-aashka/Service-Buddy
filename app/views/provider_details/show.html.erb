@@ -1,3 +1,5 @@
+<%= javascript_pack_tag 'button_to_top' %>
+
 <% if @provider_detail.present? %>
   <div class="container">
     <div class="row">
@@ -55,9 +57,11 @@
     <% end %>
 
     <h5><b>Reviews :</b></h5><hr>
-    <div id= "action_cable_comment">
-      <%= render @provider_detail.comments %>
-    </div> 
+    <div style="height: 400px; overflow-y: scroll" >
+      <div id= "action_cable_comment">
+        <%= render @provider_detail.comments %>
+      </div> 
+    </div>
      
   </div>
 <% end %>
