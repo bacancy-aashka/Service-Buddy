@@ -4,8 +4,6 @@
 // that code so it'll be compiled.
 
 
-
-
 require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
@@ -16,7 +14,6 @@ require("bootstrap")
 require ("select2")
 require('popper.js/dist/umd/popper')
 require("packs/address.js")
-require ("packs/jquery.raty") 
 require("chartkick")
 require("chart.js")
 

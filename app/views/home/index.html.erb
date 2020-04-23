@@ -1,3 +1,5 @@
+<%= javascript_pack_tag 'button_to_top' %>
+
 <% if user_signed_in? %>
   <%= link_to "Register as a Provider Here", user_path(current_user), method: :get, style: 'float: right; margin-right: 10px', class: 'btn btn-danger sm-btn' %>
 
