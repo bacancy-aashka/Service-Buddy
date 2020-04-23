@@ -2,6 +2,7 @@
   <p>
     <strong>Reviewer :</strong>
     <%= comment.user.fullname %>
+    <span style="font-size: 10px; color: midnightblue; margin-left:8px; text-decoration:none;"><i><b><%= time_ago_in_words(comment.created_at) %> ago</b></i></span>
   </p>
   <p>
     <div class="star-rating" data-score= <%= comment.rating %> ></div>
@@ -9,7 +10,7 @@
   <p>
     <strong>Comment :</strong>
     <%= comment.body %>
-    <span style="font-size: 10px; color: midnightblue"><i><b> commented on <%= comment.created_at.strftime('%v') %></b></i></span>
+    
   </p>
   
    
