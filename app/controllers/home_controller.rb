@@ -3,8 +3,12 @@ class HomeController < ApplicationController
   # before_action :authenticate_user!
 
   def index
-    @provider_details = ProviderDetail.where(email_confirmed: true)
+    @provider_details = ProviderDetail.where(email_confirmed: true).paginate(page: params[:page], per_page: 3)
     @categories= Category.all
+    respond_to do |format|
+      format.html
+      format.js
+     end
   end
 
   def msg

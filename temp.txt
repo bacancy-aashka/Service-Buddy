@@ -52,3 +52,5 @@ cron steps =>
 
 =================================================================
 From 1st => Desc-1, Chart with js.erb not working.
+
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a976c236-c27a-405b-8614-2962dc913fce] Skipping image analysis because the mini_magick gem isn't installed
