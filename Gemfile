@@ -90,3 +90,5 @@ gem 'betterlorem'
 gem 'bootstrap-will_paginate'
 
 gem 'mini_magick'
+
+gem 'ransack', github: 'activerecord-hackery/ransack'

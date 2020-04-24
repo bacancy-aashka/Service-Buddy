@@ -1,11 +1,13 @@
 class CategoriesController < ApplicationController
 
   before_action :authenticate_user! 
+  before_action :check_user
   before_action :set_category, only: %i[edit update destroy]
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_category
 
   def index
-    @categories = Category.all
+    @category = Category.ransack(params[:q])
+    @categories_result = @category.result(distinct: true).paginate(per_page: 5, page: params[:page])
   end
 
   def new
@@ -37,6 +39,12 @@ class CategoriesController < ApplicationController
   end
 
   private
+
+  def check_user
+    unless current_user.admin?
+      redirect_to root_path
+    end
+  end
 
   def set_category
     @category = Category.find(params[:id])
