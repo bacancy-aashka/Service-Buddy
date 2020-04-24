@@ -4,7 +4,12 @@ class WorkList < ApplicationRecord
 
   # VALIDATION :
   validates :title, :description, presence: true
-  validate :date_past?
+
+  before_create {
+    if date < Date.today
+      throw :abort
+    end
+  }
 
   def date_past?
     if date.present?

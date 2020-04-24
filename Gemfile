@@ -13,6 +13,8 @@ gem 'jquery-ui-rails'
 
 gem 'popper_js'
 
+gem 'coffee-rails'
+
 gem 'select2-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -82,3 +84,11 @@ gem "chartkick"
 gem 'groupdate'
 
 gem 'font-awesome-rails'
+
+gem 'will_paginate'
+
+gem 'betterlorem'
+
+gem 'bootstrap-will_paginate'
+
+gem 'mini_magick'

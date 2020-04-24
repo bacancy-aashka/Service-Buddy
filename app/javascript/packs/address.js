@@ -41,7 +41,7 @@ document.addEventListener("turbolinks:load", function(){
         ContentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function(data){
-            document.getElementById("provider-detail").innerHTML=data.provider_detail;
+            document.getElementById("provider_detail_for_pagination").innerHTML=data.provider_detail;
         }
     });
   });

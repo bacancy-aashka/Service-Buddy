@@ -1,4 +1,5 @@
-require ("packs/jquery.raty") 
+require("packs/jquery.raty") 
+require("packs/pagination.js.coffee") 
 
 $(document).ready(function(){
   
