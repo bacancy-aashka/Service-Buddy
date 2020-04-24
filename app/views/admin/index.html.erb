@@ -1,0 +1,44 @@
+<h1>All Users</h1>
+
+<%= search_form_for @user, url: admin_index_path, class:"form-inline md-form mr-auto mb-4" do |b| %>
+  <%= b.search_field :firstname_or_lastname_or_email_or_contact_cont, class: "form-control mr-sm-2" %>
+  <button class="btn btn-dark" type="submit">Search</button>
+<% end %> 
+<br>
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Contact</th>
+      <th>Gender</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users_result.each do |user| %>
+      <tr>
+        <td><%= user.firstname %></td>
+        <td><%= user.lastname %></td>
+        <td><%= user.email %></td>
+        <td><%= user.contact %></td>
+        <td><%= user.gender %></td>
+        <td><%= link_to 'show',user_path(user), class: "btn btn-light btn-sm" %></td>
+        <td><%= link_to 'Delete Profile', user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="digg_pagination">
+  <div class="page_info">
+    <%= page_entries_info @users_result %>
+  </div>  
+  <%= will_paginate @users_result %>
+  <br>
+</div>
+<%= link_to 'Back', '/users', class: "btn btn-dark" %> 
+

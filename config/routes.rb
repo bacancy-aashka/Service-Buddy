@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   root 'home#index'
  
   devise_for :users 
+
+  resources :admin
   
   resources :users do
     get 'inbox', on: :collection, to: "conversations#inbox"  
