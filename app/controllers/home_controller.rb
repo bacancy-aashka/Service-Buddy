@@ -3,8 +3,12 @@ class HomeController < ApplicationController
   # before_action :authenticate_user!
 
   def index
-    @provider_details = ProviderDetail.where(email_confirmed: true)
+    @provider_details = ProviderDetail.where(email_confirmed: true).paginate(page: params[:page], per_page: 3)
     @categories= Category.all
+    respond_to do |format|
+      format.html
+      format.js
+     end
   end
 
   def msg
@@ -42,16 +46,16 @@ class HomeController < ApplicationController
 
   def find_provider_by_category
     category_id = Category.find(params[:format])
-    @provider_details= ProviderDetail.where(category_id: category_id.id)
+    @provider_details= ProviderDetail.where(category_id: category_id.id, email_confirmed: true )
   end
   
   def find_provider_for_city
     category_id = Category.find_by(name: params[:search_input].capitalize)
-    @provider_details= params[:city] != "" ? ProviderDetail.where(category_id: category_id.id, city: params[:city]) : ProviderDetail.where(category_id: category_id.id)
+    @provider_details= params[:city] != "" ? ProviderDetail.where(category_id: category_id.id, email_confirmed: true, city: params[:city]) : ProviderDetail.where(category_id: category_id.id, email_confirmed: true)
   end
 
   def filter_for_cities
-    @provider_details= ProviderDetail.where(city: params[:city])
+    @provider_details= ProviderDetail.where(city: params[:city], email_confirmed: true)
     render json: { provider_detail:render_to_string('home/_provider_details', layout:false, locals: { provider_details: @provider_details }) }
   end
 

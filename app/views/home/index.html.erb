@@ -24,9 +24,14 @@
         <%end%>
       </ul>
     </div>
-    <div class="col-md-6" >
+    <div class="col-md-6" id="provider_detail_for_pagination" >
       <%= render 'provider_details' %>
     </div>
+
+    <div id="infinite-scrolling">
+      <%= will_paginate @provider_details %>
+    </div>
+
     <div class="col-md-4 inbox-msg" id="msg_box">
     </div>
   </div>
