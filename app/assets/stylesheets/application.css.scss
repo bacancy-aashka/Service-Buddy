@@ -356,3 +356,18 @@
 #myBtn:hover {
   background-color: #555; /* Add a dark-grey background on hover */
 }
+
+// For table in reminders list in user/show page.
+
+.tableBodyScroll tbody {
+  display: block;
+  max-height: 400px;
+  overflow-y: scroll;
+}
+
+.tableBodyScroll thead,
+tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
