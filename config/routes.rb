@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  
   root 'home#index'
  
   devise_for :users 
@@ -25,7 +26,10 @@ Rails.application.routes.draw do
   resources :provider_details do
     get ':token/confirm_email',on: :collection, action: :confirm_email, as: :confirm_email
 
-    resources :comments
+    resources :comments do
+      get 'likes/create'
+      get 'likes/delete'
+    end
   end
 
 end

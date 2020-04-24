@@ -14,6 +14,7 @@ require("bootstrap")
 require ("select2")
 require('popper.js/dist/umd/popper')
 require("packs/address.js")
+ 
 require("chartkick")
 require("chart.js")
 

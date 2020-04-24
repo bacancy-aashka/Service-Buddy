@@ -80,3 +80,5 @@ gem 'whenever'
 gem "chartkick"
 
 gem 'groupdate'
+
+gem 'font-awesome-rails'

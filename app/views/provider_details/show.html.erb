@@ -52,18 +52,20 @@
       <% end %>
       <hr>
     <% else %>
+      <br>
       <h5><b>Give Review:</b></h5><hr>
       <%= render 'comments/form' %><hr>
     <% end %>
 
     <h5><b>Reviews :</b></h5><hr>
-    <div style="height: 400px; overflow-y: scroll" >
+    <div style="height: 400px; overflow-y: scroll" id="comment" >
       <div id= "action_cable_comment">
         <%= render @provider_detail.comments %>
       </div> 
     </div>
      
   </div>
+  
 <% end %>
   
 <script>
