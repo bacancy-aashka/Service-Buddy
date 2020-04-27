@@ -23,6 +23,14 @@
                             <label>Email</label>
                             <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"email@xyz.com", class:"form-control" %>
                           </div>
+
+                          <div class="form-group">
+                            Gender<br/>
+                            <%= f.radio_button :gender, 'male' %> Male
+                            <%= f.radio_button :gender, 'female' %> Female
+                            <%= f.radio_button :gender, 'other' %> Other<br> 
+                          </div>
+                          
                           <div class="form-group">
                             <label>Phone No</label>
                             <%= f.text_field :contact, autofocus: true, autocomplete: "contact", placeholder:"0000000000", class:"form-control"%>                                

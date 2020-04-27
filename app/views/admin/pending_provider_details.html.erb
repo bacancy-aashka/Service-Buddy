@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row">   
+    <div class="col-md-10 col-md-offset-1">
+      <div class="panel panel-default panel-table">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col col-xs-6">
+              <%= form_tag(pending_provider_details_admin_index_path, method: "get", remote: false, class:'form-inline md-form mr-auto mb-4') do %>
+                <%= text_field_tag :query, params[:query], class: "form-control mr-sm-2" %>
+                <button class="btn btn-dark" type="submit">Search</button>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="panel-body">
+          <table class="table table-striped table-bordered table-list">
+            <thead>
+              <tr>
+                <th>Category</th>
+                <th>Name</th>
+                <th>City</th>
+                <th>Zip-Code</th>
+                <th></th>
+              </tr> 
+            </thead>
+            <tbody>
+              <% @pending_provider_details.each do |provider_detail| %>
+                <tr>
+                  <td><%= provider_detail.category.name %></td>
+                  <td><%= provider_detail.provider.user.fullname %></td>
+                  <td><%= provider_detail.city %></td>
+                  <td><%= provider_detail.zipcode %></td>
+                  <td><%= link_to "show", show_provider_detail_admin_index_path(provider_detail), class: "btn btn-secondary btn-sm" %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+        <div class="panel-footer">
+          <div class="row">
+            <div class="digg_pagination">
+              <%= will_paginate @pending_provider_details %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

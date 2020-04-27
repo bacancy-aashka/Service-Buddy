@@ -4,10 +4,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  enum gender: %i[male female other]
+
   has_one_attached :image, dependent: :destroy
   has_one :provider, dependent: :destroy
   has_many :messages
-  has_many :conversations, foreign_key: :sender_id
+  has_many :conversations, foreign_key: :sender_id, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   

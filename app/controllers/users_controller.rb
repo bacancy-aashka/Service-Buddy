@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :set_user, only: %i[show]
+  before_action :set_user, only: %i[show destroy]
   before_action :check_user, only: %i[show]
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_user
 
@@ -14,6 +14,14 @@ class UsersController < ApplicationController
     @work_list_graph = WorkList.all_provider_detail_graph(params, @user)
   end
 
+  def destroy
+    if @user.destroy
+      redirect_to admin_index_path, notice: 'User is successfully updated.'
+    else
+      redirect_to admin_index_path, notice: 'User failed to delete.'
+    end
+  end
+
   private
 
   def set_user
@@ -21,7 +29,7 @@ class UsersController < ApplicationController
   end
 
   def check_user
-    unless current_user == @user
+    unless (@user == current_user || current_user.admin?)
       redirect_to user_path(current_user)
     end
   end
