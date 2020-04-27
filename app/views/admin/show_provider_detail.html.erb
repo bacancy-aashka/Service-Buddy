@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3">
+      <h3 class="my-4"><i>Provider Detail</i></h3>
+      <div class="list-group">
+        <%= link_to 'Destroy', delete_provider_detail_admin_index_path(@provider_detail), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %>
+      </div>
+    </div>
+    <div class="col-lg-9">
+      <div class="card mt-4">
+        <% if @provider_detail.image.present? %>
+          <div style="width:600px; heigth: auto" >
+            <%= image_tag(@provider_detail.image, style: "height: 300px; width:200px; padding: 10px; margin-left: 300px", class: "card-img-top img-fluid") %>
+          </div>
+        <% else %>
+          <h5 style="text-align: center; padding-top: 20px;">Image Not Uploaded</h5>
+        <% end %>
+        <div class="card-body">
+          <hr>
+          <h4 class="card-title">Category : <%= @provider_detail.category.name %></h4>
+          <hr>
+          <h5 class="card-title">Name : <%= @provider_detail.provider.user.fullname %></h5>
+          <h5 class="card-title">Email : <%= @provider_detail.provider.user.email %></h5>
+          <h5 class="card-title">Contact No : <%= @provider_detail.provider.user.contact %></h5>
+          <h5 class="card-title">Gender : <%= @provider_detail.provider.user.gender %></h5>
+          <h5 class="card-title">City : <%= @provider_detail.city %></h5>
+          <h5 class="card-title">Zipcode : <%= @provider_detail.zipcode %></h5>
+          <h4 class="card-title">Date : <%= @provider_detail.created_at.strftime('%v') %></h4>
+          <hr>
+          <label><b>Description :</b></label>
+          <p class="card-text"><%= @provider_detail.description %></p>
+          <hr>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
