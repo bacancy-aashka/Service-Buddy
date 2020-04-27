@@ -92,3 +92,5 @@ gem 'betterlorem'
 gem 'bootstrap-will_paginate'
 
 gem 'mini_magick'
+
+gem 'bootstrap-datepicker-rails', '~> 1.8', '>= 1.8.0.1' 

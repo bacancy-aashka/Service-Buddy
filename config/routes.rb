@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   
   resources :users do
     get 'inbox', on: :collection, to: "conversations#inbox"  
-    get 'msg',to: "home#msg" 
+    get 'msg',to: "home#msg"
+    get 'graph',to: "users#graph"
   end
   
   resources :home do

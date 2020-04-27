@@ -27,6 +27,7 @@ document.addEventListener("turbolinks:load", function(){
     $('.refresh_nav').load(window.location.href + ' .refresh_nav');
   }, 5000)); 
 
+
   
 
   $("#city").select2({
