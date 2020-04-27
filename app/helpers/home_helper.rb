@@ -13,4 +13,17 @@ module HomeHelper
       end
       @categories.to_a
     end
+
+    def provider_detail_count
+      ProviderDetail.count
+    end
+
+    def user_count
+      User.count
+    end
+
+    def category_count
+      Category.count
+    end
+
 end
