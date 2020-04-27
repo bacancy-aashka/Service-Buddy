@@ -21,6 +21,57 @@
 
  @import "bootstrap";
 
+ // for Navbar
+
+ .desc-word-break{
+  word-break: break-all;
+}
+
+.text-overflows{
+  width: 250px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 20px;
+  margin: 0;
+  background: white;
+  resize: horizontal;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+.demo{
+  padding: 15px;
+  a{
+  float: right;
+  list-style: none;
+  padding: 05px 18px;
+  color: white;
+  }
+} 
+ 
+#logo {
+float: left;
+margin-right: 10px;
+font-size: 1.7em;
+color: white;
+text-transform: uppercase;
+letter-spacing: -1px;
+font-weight: bold;
+line-height: 1;
+  &:hover {
+  text-decoration: none;
+  }
+}
+
  // for sign-in page.
  .form-signin {
    width: 100%;
@@ -341,7 +392,7 @@
   display: none; /* Hidden by default */
   position: fixed; /* Fixed/sticky position */
   bottom: 20px; /* Place the button at the bottom of the page */
-  right: 30px; /* Place the button 30px from the right */
+  left: 30px; /* Place the button 30px from the right */
   z-index: 99; /* Make sure it does not overlap */
   border: none; /* Remove borders */
   outline: none; /* Remove outline */
@@ -359,15 +410,11 @@
 
 // For table in reminders list in user/show page.
 
-.tableBodyScroll tbody {
+.my-custom-scrollbar {
+  position: relative;
+  height: 300px;
+  overflow: auto;
+  }
+  .table-wrapper-scroll-y {
   display: block;
-  max-height: 400px;
-  overflow-y: scroll;
-}
-
-.tableBodyScroll thead,
-tbody tr {
-  display: table;
-  width: 100%;
-  table-layout: fixed;
-}
+  }

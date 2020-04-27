@@ -1,3 +1,12 @@
+GIT
+  remote: https://github.com/activerecord-hackery/ransack.git
+  revision: 6434e3bedfbf4cc5d97d33c84d10682970a95083
+  specs:
+    ransack (2.3.2)
+      activerecord (>= 5.2.1)
+      activesupport (>= 5.2.1)
+      i18n
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -273,6 +282,7 @@ DEPENDENCIES
   popper_js
   puma (~> 4.1)
   rails (~> 6.0.2, >= 6.0.2.1)
+  ransack!
   rolify
   sass-rails (>= 6)
   select2-rails

@@ -2,31 +2,33 @@
   <% provider_details.each do |provider_detail| %>
     <div class="card">
       <div class="card-header card_side card_side--front">
-       <b>
-        <h4 class="card_heading">
-          <span class="card_heading-span card_heading-span--3"><%= provider_detail.category.name %></span>
-        </h4>
+        <b>
+          <h4 class="card_heading">
+            <span class="card_heading-span card_heading-span--3"><%= provider_detail.category.name %></span>
+          </h4>
         </b>
       </div>
       <div class="card-horizontal">
         <div class="img-square-wrapper">
           <%= link_to image_tag(provider_detail.image, style:'width:300px;height:300px') if provider_detail.image.attached? %>
         </div>
-      <div class="card-body card_details">
-        <h4 class="card-title">
-        <b><%= provider_detail.category.name %></b>
-        </h4>
-        <h5>City: <%= provider_detail.city %></h5>
-        <p class="card-text"> <%= provider_detail.description.truncate_words(15) %></p>
-        <p class="card-text"><i> <%= CS.states(:in)[provider_detail.state.to_sym]  %></i></p>
-        <p class="card-text"><i> <%= provider_detail.zipcode %></i></p>
-        <p class="card-text"><div class="star-rating" data-score= <%= provider_detail.comments.get_average %> ></div></p>
-      </div>
+        <div class="card-body card_details">
+          <h4 class="card-title">
+            <b><%= provider_detail.category.name %></b>
+          </h4>
+          <h5>City: <%= provider_detail.city %></h5>
+          <p class="card-text"> <%= provider_detail.description.truncate_words(15) %></p>
+          <p class="card-text"><i> <%= CS.states(:in)[provider_detail.state.to_sym]  %></i></p>
+          <p class="card-text"><i> <%= provider_detail.zipcode %></i></p>
+          <p class="card-text"><div class="star-rating" data-score= <%= provider_detail.comments.get_average %> ></div></p>
+        </div>
       </div>
       <div class="card-footer card_side card_side--back card_side--back-3 vertical_align">
         <%= link_to "Show", provider_detail_path(provider_detail), style: 'margin:0px 5px;', class:'btn btn-light btn-lg btn-center' %>
-        <%= link_to 'Edit', edit_provider_detail_path(provider_detail), style: 'margin:0px 5px;', class: "btn btn-light btn-lg btn-center" %>
-        <%= link_to 'Delete', provider_detail_path(provider_detail), method: :delete, style: 'margin:0px 5px;', class: "btn btn-danger btn-lg btn-center" %>
+        <% if provider_detail.provider.user_id == current_user.id %>
+          <%= link_to 'Edit', edit_provider_detail_path(provider_detail), style: 'margin:0px 5px;', class: "btn btn-light btn-lg btn-center" %>
+          <%= link_to 'Delete', provider_detail_path(provider_detail), method: :delete, style: 'margin:0px 5px;', class: "btn btn-danger btn-lg btn-center" %>
+        <% end %>
       </div>
     </div><br>
   <% end %>

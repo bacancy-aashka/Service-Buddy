@@ -10,6 +10,7 @@ class ProviderDetail < ApplicationRecord
   validates :zipcode, numericality: true
   validates_uniqueness_of :category_id, scope: [:provider_id]
 
+  scope :searching, ->(s) { ProviderDetail.joins(:category).where('provider_details.city LIKE ? OR provider_details.state LIKE ? OR provider_details.zipcode LIKE ? OR categories.name LIKE ? AND provider_details.email_confirmed = ? ', "%#{s}%", "%#{s}%", "%#{s}%", "%#{s}%", false) }
 
   # after_create_commit {
   #   ProviderDetailBroadcastJob.perform_later(self)

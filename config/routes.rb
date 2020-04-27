@@ -3,6 +3,12 @@ Rails.application.routes.draw do
   root 'home#index'
  
   devise_for :users 
+
+  resources :admin, only: %i[index] do
+    get 'pending_provider_details', on: :collection, action: :pending_provider_details, as: :pending_provider_details
+    get 'show_provider_detail/:id', on: :collection, action: :show_provider_detail, as: :show_provider_detail
+    delete 'delete_provider_detail/:id', on: :collection, action: :delete_provider_detail, as: :delete_provider_detail
+  end
   
   resources :users do
     get 'inbox', on: :collection, to: "conversations#inbox"  
