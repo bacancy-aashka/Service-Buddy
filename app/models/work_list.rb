@@ -1,25 +1,10 @@
 class WorkList < ApplicationRecord
+  
   belongs_to :provider
   belongs_to :category
 
   # VALIDATION :
   validates :title, :description, presence: true
-
-  before_create {
-    if date < Date.today
-      throw :abort
-    end
-  }
-
-  def date_past?
-    if date.present?
-      if date < Date.today
-        errors.add(:date, "can't be in the Past")
-      end
-    else
-      errors.add(:date, "can't be blank")
-    end  
-  end
 
   def self.individual_provider_detail_graph(params, provider_detail)
     if (params[:min_date] && params[:max_date]).present?

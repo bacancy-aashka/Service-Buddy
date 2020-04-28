@@ -1,29 +1,30 @@
 module HomeHelper
-    def select_city
-      ProviderDetail.select(:city).distinct
-    end
 
-    def set_categories(user)
-      @categories = []
-      if user.provider.present?
-        user.provider.provider_details.each do |provider_detail|
-          category = provider_detail.category
-          @categories.push(category)
-        end
+  def select_city
+    ProviderDetail.select(:city).distinct
+  end
+
+  def set_categories(user)
+    @categories = []
+    if user.provider.present?
+      user.provider.provider_details.each do |provider_detail|
+        category = provider_detail.category
+        @categories.push(category)
       end
-      @categories.to_a
     end
+    @categories.to_a
+  end
 
-    def provider_detail_count
-      ProviderDetail.count
-    end
+  def provider_detail_count
+    ProviderDetail.count
+  end
 
-    def user_count
-      User.count
-    end
-
-    def category_count
-      Category.count
-    end
+  def user_count
+    User.count
+  end
+  
+  def category_count
+    Category.count
+  end
 
 end
