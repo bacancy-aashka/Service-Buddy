@@ -1,4 +1,5 @@
 class ProviderDetail < ApplicationRecord
+
   belongs_to :provider
   belongs_to :category
   has_many :comments, dependent: :destroy
@@ -6,7 +7,7 @@ class ProviderDetail < ApplicationRecord
 
   # VALIDATION :
   validates :city, :state, presence: true
-  # validates :description, length: {minimum: 60}
+  validates :description, length: {minimum: 60}
   validates :zipcode, numericality: true
   validates_uniqueness_of :category_id, scope: [:provider_id]
 

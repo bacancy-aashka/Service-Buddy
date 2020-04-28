@@ -34,6 +34,7 @@
         </div>
       </div>
     </div>
+    
   </div>
   <hr>
   <% if @user.provider.present? %>
@@ -62,23 +63,23 @@
                 <th>Status</th>
                 <th></th>
               </tr>
-              <tbody>
-                <% @reminders.each do |reminder| %>
-                  <tr>
-                    <td><%= reminder.category.name %></td>
-                    <td><%= reminder.title %></td>
-                    <td><%= reminder.date %></td>
-                    <td><%= reminder.description %></td>
-                    <% if reminder.status %>
-                      <td><span class="badge badge-success">Completed</span></td>
-                    <% else %>
-                      <td><%= link_to "Done ?", reminder_status_home_index_path(reminder), method: :get, class:'btn btn-primary btn-sm' %></td>
-                    <% end %>
-                    <td><%= link_to "Delete", delete_reminder_home_index_path(reminder), class: 'btn btn-danger btn-sm', method: :delete %></td>
-                  </tr>
-                <% end %>
-              </tbody>
             </thead>
+            <tbody>
+              <% @reminders.each do |reminder| %>
+                <tr>
+                  <td><%= reminder.category.name %></td>
+                  <td><%= reminder.title %></td>
+                  <td><%= reminder.date %></td>
+                  <td><%= reminder.description %></td>
+                  <% if reminder.status %>
+                    <td><span class="badge badge-success">Completed</span></td>
+                  <% else %>
+                    <td><%= link_to "Done ?", reminder_status_home_index_path(reminder), method: :get, class:'btn btn-primary btn-sm' %></td>
+                  <% end %>
+                  <td><%= link_to "Delete", delete_reminder_home_index_path(reminder), class: 'btn btn-danger btn-sm', method: :delete %></td>
+                </tr>
+              <% end %>
+            </tbody>
           </table>
         </div>
         <div class="modal-footer">
@@ -87,4 +88,4 @@
       </div>
     </div>
   </div>
-<% end%>
+<% end %>

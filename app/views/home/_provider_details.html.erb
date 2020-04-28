@@ -1,8 +1,10 @@
 <div id="provider-detail">
   <% if @provider_details.present? %>
     <% @provider_details.each do |provider_detail| %>
-      <% unless provider_detail.provider.user == current_user %> 
-        <%= render partial: '/home/provider_detail', locals: { provider_detail: provider_detail } %>
+      <%= cache provider_detail do %>
+        <% unless provider_detail.provider.user == current_user %> 
+          <%= render partial: '/home/provider_detail', locals: { provider_detail: provider_detail } %>
+        <% end %>
       <% end %>
     <% end %> 
   <% else %>  
