@@ -18,6 +18,7 @@
   *= require select2-bootstrap
   *= require bootstrap-datepicker
   *= require font-awesome
+  
 
  */
 
@@ -466,4 +467,13 @@ font-family: 'Bangers', cursive;
   }
 .back-btn{
   margin: 0px 10px;
+}
+.like-button{
+  
+  &:hover{
+    a{
+      color: white; 
+    }
+    color: white;
+  }
 }

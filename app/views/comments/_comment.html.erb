@@ -19,14 +19,21 @@
   
   <p>
     <% if like_present?(current_user.id,comment.id) %>
-      <%= link_to 'Liked', provider_detail_comment_likes_delete_path(@provider_detail.id,comment.id), remote: true, class: 'mr-2' %>
+      <span class="btn btn-outline-primary btn-sm btn-iconed btn-rounded like-button">
+        <%= link_to 'Liked', provider_detail_comment_likes_delete_path(@provider_detail.id,comment.id), remote: true, class: 'mr-1' %>
+        <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+      </span>  
     <% else %>
-      <%= link_to 'Like', provider_detail_comment_likes_create_path(@provider_detail.id,comment.id), remote: true, class: 'mr-2' %>  
+      <span class="btn btn-outline-primary btn-sm btn-iconed btn-rounded like-button">
+        <%= link_to 'Like', provider_detail_comment_likes_create_path(@provider_detail.id,comment.id), remote: true, class: 'mr-1' %>
+        <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+      </span>
     <% end %>
     <% if comment.user_id == current_user.id %>
       <%= link_to 'Destroy Comment', [comment.provider_detail, comment],
                     method: :delete,
-                    data: { confirm: 'Are you sure?' } %>
+                    data: { confirm: 'Are you sure?' },
+                    class: 'btn btn-outline-primary btn-sm' %>
     <% end %>
   </p><hr>
   <script>

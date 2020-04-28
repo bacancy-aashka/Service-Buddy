@@ -1,7 +1,5 @@
 $(document).on('turbolinks:before-cache', function() {
   $('#city').select2('destroy');
-  $('.star-rating').raty('destroy');
-  $('#star-rating').raty('destroy');
 } );
 document.addEventListener("turbolinks:load", function(){
   var state = document.getElementById("provider_detail_state");
@@ -46,4 +44,5 @@ document.addEventListener("turbolinks:load", function(){
         }
     });
   });
+
 })
