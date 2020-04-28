@@ -5,16 +5,13 @@
       <h1 class="my-4"></h1>
       <div class="list-group">
         <% if current_user == @user %>
-
-          <%= link_to "Create Profile", new_provider_detail_path, style: 'float: right', class: 'btn btn-danger sm-btn' %><br/>
-          <%= link_to "Favourite", faviourite_post_list_users_path, style: 'float: right', class: 'btn btn-warning sm-btn',remote:true %><br/>
-
+          <%= link_to "Create Profile", new_provider_detail_path, style: 'float: right', class: 'btn btn-danger sm-btn btn-show' %><br/>
+          <%= link_to "Favourites", faviourite_post_list_users_path, style: 'float: right', class: 'btn btn-warning sm-btn btn-show' %><br/>
           <% if current_user.provider%>
             <a href="#reminder"  class=" btn btn-success sm-btn btn-show" data-toggle="modal">Reminder</a><br/>
             <%= link_to "View Garphs", user_graph_path(current_user.id), style: 'float: right', class: 'btn btn-danger sm-btn btn-show' %><br/>
           <% end%>
         <% end %>
-          <%= link_to 'Back', root_path, class: "btn btn-secondary sm-btn" %>
       </div>
     </div>
 
@@ -42,7 +39,6 @@
   <hr>
   <div id="favourite_post">
   </div>
-  <hr>
   <% if @user.provider.present? %>
     <%= render partial: '/users/provider', locals: {provider_details: only_confirmed_provider_details(@user)} %>
   <% else %>

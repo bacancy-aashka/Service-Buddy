@@ -12,11 +12,11 @@ module HomeHelper
      else
       return "Add to Favourite"
      end
-     
     end
 
     def provider_detail_count
       ProviderDetail.count
+    end
 
   def set_categories(user)
     @categories = []
@@ -25,7 +25,6 @@ module HomeHelper
         category = provider_detail.category
         @categories.push(category)
       end
-
     end
     @categories.to_a
   end
