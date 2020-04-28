@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :messages
   has_many :conversations, foreign_key: :sender_id, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
   
 
   # VALIDATION :

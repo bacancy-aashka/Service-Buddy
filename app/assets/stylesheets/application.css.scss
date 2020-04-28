@@ -16,6 +16,9 @@
   *= require jquery-ui
   *= require select2
   *= require select2-bootstrap
+  *= require bootstrap-datepicker
+  *= require font-awesome
+  
 
  */
 
@@ -64,9 +67,10 @@ margin-right: 10px;
 font-size: 1.7em;
 color: white;
 text-transform: uppercase;
-letter-spacing: -1px;
-font-weight: bold;
+letter-spacing: 2px;
+// font-weight: bold;
 line-height: 1;
+font-family: 'Bangers', cursive;
   &:hover {
   text-decoration: none;
   }
@@ -253,8 +257,9 @@ line-height: 1;
      font-size: 12px;
      background: red;
      color: white;
-     margin-left: 1px;
+     margin-left: -14px;
    }
+   
  
    .select2-container--bootstrap {
      display: inline-block !important;
@@ -322,6 +327,7 @@ line-height: 1;
   // .css
 
   .footer {
+    margin: 0px;
     background: #152F4F;
     color: white;
   }
@@ -409,6 +415,34 @@ line-height: 1;
 }
 
 // For table in reminders list in user/show page.
+.modal-content{
+  .tableBodyScroll tbody {
+    display: block;
+    max-height: 400px;
+    overflow-y: scroll;
+  }
+  
+  .tableBodyScroll thead,
+  tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+  }
+
+}
+
+#infinite-scrolling{
+  .pagination{
+    display: none;
+  }
+}
+
+
+.btn-show{
+  background-image: linear-gradient(to right bottom, #84bff7, #5643fa);
+  color: hsl(0, 100%, 100%);
+  border-color: navy;
+}
 
 .my-custom-scrollbar {
   position: relative;
@@ -418,3 +452,28 @@ line-height: 1;
   .table-wrapper-scroll-y {
   display: block;
   }
+
+  // form
+
+  .field{
+    margin: 2px 0px;
+    padding: 10px;
+    .col-form-label{
+      font-size: 1.1rem;
+    }
+    .col-sm-10{
+      padding: 5px 2px;
+    }
+  }
+.back-btn{
+  margin: 0px 10px;
+}
+.like-button{
+  
+  &:hover{
+    a{
+      color: white; 
+    }
+    color: white;
+  }
+}

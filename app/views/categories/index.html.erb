@@ -1,7 +1,7 @@
-<h1>Categories</h1>  
+<h1 style="font-family: 'Bangers', cursive; padding:0px 20px; letter-spacing: 1px;">Categories</h1>
 
-<%= search_form_for @category,  class:'form-inline md-form mr-auto mb-4' do |b| %>
-  <%= b.search_field :name_cont, class: "form-control mr-sm-2" %>
+<%= search_form_for @category,  class:'form-inline md-form mr-auto mb-4 ml-2' do |b| %>
+  <%= b.search_field :name_cont, class: "form-control mr-sm-2 ml-2" %>
   <button class="btn btn-dark" type="submit">Search</button>
 <% end %>
 <br>
@@ -32,5 +32,5 @@
 </div>
 
 <br>
-<%= link_to 'New Category', new_category_path, class: "btn btn-primary" %>
-<%= link_to 'Back', root_path, class: "btn btn-dark" %>
+<%= link_to 'New Category', new_category_path, class: "btn btn-primary back-btn" %>
+<%= link_to 'Back', root_path, class: "btn btn-dark back-btn" %>
