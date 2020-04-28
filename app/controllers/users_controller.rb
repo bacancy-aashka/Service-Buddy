@@ -26,10 +26,10 @@ class UsersController < ApplicationController
     post = FavouritePost.find_by(user: current_user, provider_detail_id: params[:format] )
     if post
       post.destroy
-      redirect_to '/'
+      redirect_to root_path
     else
       FavouritePost.create(user: current_user, provider_detail_id: params[:format] )
-      redirect_to '/'
+      redirect_to root_path
     end
   end
 
