@@ -14,7 +14,14 @@ Rails.application.routes.draw do
   resources :users do
     get 'inbox', on: :collection, to: "conversations#inbox"  
     get 'msg',to: "home#msg"
+
+    collection do
+      post 'faviourite_post'
+      get 'faviourite_post_list'
+    end
+
     get 'graph',to: "users#graph"
+
   end
   
   resources :home do
