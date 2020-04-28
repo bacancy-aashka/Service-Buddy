@@ -83,6 +83,8 @@ gem "chartkick"
 
 gem 'groupdate'
 
+gem 'font-awesome-rails'
+
 gem 'will_paginate'
 
 gem 'betterlorem'
@@ -90,5 +92,7 @@ gem 'betterlorem'
 gem 'bootstrap-will_paginate'
 
 gem 'mini_magick'
+
+gem 'bootstrap-datepicker-rails', '~> 1.8', '>= 1.8.0.1' 
 
 gem 'ransack', github: 'activerecord-hackery/ransack'

@@ -14,6 +14,7 @@ module HomeHelper
       @categories.to_a
     end
 
+
     def is_favourite?(provider_detail)
      if current_user.favourite_posts.find_by(provider_detail_id: provider_detail.id)
       return  "Remove from Favourite"
@@ -22,4 +23,17 @@ module HomeHelper
      end
      
     end
+
+    def provider_detail_count
+      ProviderDetail.count
+    end
+
+    def user_count
+      User.count
+    end
+
+    def category_count
+      Category.count
+    end
+
 end

@@ -1,32 +1,53 @@
+
 <% if comment.id.present? %>
   <p>
     <strong>Reviewer :</strong>
     <%= comment.user.fullname %>
+    <span style="font-size: 10px; color: midnightblue; margin-left:8px; text-decoration:none;"><i><b><%= time_ago_in_words(comment.created_at) %> ago</b></i></span>
   </p>
-  <p>
-    <div class="star-rating" data-score= <%= comment.rating %> ></div>
+  <p >
+    <div style="display: inline-block !important;"><%= comment.likes.count %> <%= 'Like'.pluralize(comment.likes.count) %></div>
+    <small style="opacity: 0.25; font-size:9px;"><i class="fa fa-circle mx-2" aria-hidden="true"></i></small>
+    <div class="star-rating" data-score= <%= comment.rating %> style="display: inline-block !important;"></div>
   </p>
+  
   <p>
     <strong>Comment :</strong>
     <%= comment.body %>
-    <span style="font-size: 10px; color: midnightblue"><i><b> commented on <%= comment.created_at.strftime('%v') %></b></i></span>
-  </p> 
+  </p>
+      
+  
   <p>
+    <% if like_present?(current_user.id,comment.id) %>
+      <span class="btn btn-outline-primary btn-sm btn-iconed btn-rounded like-button">
+        <%= link_to 'Liked', provider_detail_comment_likes_delete_path(@provider_detail.id,comment.id), remote: true, class: 'mr-1' %>
+        <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+      </span>  
+    <% else %>
+      <span class="btn btn-outline-primary btn-sm btn-iconed btn-rounded like-button">
+        <%= link_to 'Like', provider_detail_comment_likes_create_path(@provider_detail.id,comment.id), remote: true, class: 'mr-1' %>
+        <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+      </span>
+    <% end %>
     <% if comment.user_id == current_user.id %>
       <%= link_to 'Destroy Comment', [comment.provider_detail, comment],
                     method: :delete,
-                    data: { confirm: 'Are you sure?' } %>
+                    data: { confirm: 'Are you sure?' },
+                    class: 'btn btn-outline-primary btn-sm' %>
     <% end %>
   </p><hr>
+  <script>
+    
+      $('.star-rating').raty({
+        path: '/assets/',
+        readOnly: true,
+        half: 'true',
+        score: function() {
+              return $(this).attr('data-score');
+        }
+      });
+    
+</script>
 <% end %>
 
-<script>
-    $('.star-rating').raty({
-      path: '/assets/',
-      readOnly: true,
-      half: 'true',
-      score: function() {
-            return $(this).attr('data-score');
-    }
-  });
-</script>
+

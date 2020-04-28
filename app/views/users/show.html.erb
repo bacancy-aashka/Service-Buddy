@@ -5,10 +5,13 @@
       <h1 class="my-4"></h1>
       <div class="list-group">
         <% if current_user == @user %>
+
           <%= link_to "Create Profile", new_provider_detail_path, style: 'float: right', class: 'btn btn-danger sm-btn' %><br/>
-          <%= link_to "Favourite", faviourite_post_list_users_path, style: 'float: right', class: 'btn btn-primary sm-btn',remote:true %><br/>
+          <%= link_to "Favourite", faviourite_post_list_users_path, style: 'float: right', class: 'btn btn-warning sm-btn',remote:true %><br/>
+
           <% if current_user.provider%>
-            <a href="#reminder"  class=" btn btn-success sm-btn" data-toggle="modal">Reminder</a><br/>
+            <a href="#reminder"  class=" btn btn-success sm-btn btn-show" data-toggle="modal">Reminder</a><br/>
+            <%= link_to "View Garphs", user_graph_path(current_user.id), style: 'float: right', class: 'btn btn-danger sm-btn btn-show' %><br/>
           <% end%>
         <% end %>
           <%= link_to 'Back', root_path, class: "btn btn-secondary sm-btn" %>

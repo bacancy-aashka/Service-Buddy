@@ -6,7 +6,7 @@
       </h3>
         <ul class="list-group refresh">
           <% @conversations.each do |conversation|%>
-            <li class="list-group-item" ><%= link_to (conversation.opposed_user(current_user).firstname+' '+conversation.opposed_user(current_user).lastname),  user_msg_path(conversation.opposed_user(current_user)), remote:true, class: "msg_read" %> <sup class="badge"><% new_message_count(conversation.id) %><%= @count%></sup></li>
+            <li class="list-group-item" ><%= link_to (conversation.opposed_user(current_user).firstname+' '+conversation.opposed_user(current_user).lastname),  user_msg_path(conversation.opposed_user(current_user)), remote:true, class: "msg_read" %> <sup class="badge" style="margin-left: 1px;"><% new_message_count(conversation.id) %><%= @count%></sup></li>
           <%end%>
         </ul>
     </div>

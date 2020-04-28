@@ -1,6 +1,8 @@
 class MessagesController < ApplicationController
-  before_action :message_params, only: %i[create]
   
+  before_action :authenticate_user!
+  before_action :message_params, only: %i[create]
+
   def create
     @message = Message.new(message_params)
     if @message.save!

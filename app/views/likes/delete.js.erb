@@ -1,0 +1,10 @@
+document.getElementById("comment").innerHTML= "<%= j render @provider_detail.comments %>";
+
+$('.star-rating').raty({
+        path: '/assets/',
+        readOnly: true,
+        half: 'true',
+        score: function() {
+              return $(this).attr('data-score');
+        }
+      });

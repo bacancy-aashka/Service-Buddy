@@ -1,6 +1,7 @@
 require("packs/jquery.raty") 
 require("packs/pagination.js.coffee") 
 
+
 $(document).ready(function(){
   
   var mybutton = document.getElementById("myBtn");
