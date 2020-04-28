@@ -12,7 +12,11 @@ Rails.application.routes.draw do
   
   resources :users do
     get 'inbox', on: :collection, to: "conversations#inbox"  
-    get 'msg',to: "home#msg" 
+    get 'msg',to: "home#msg"
+    collection do
+      post 'faviourite_post'
+      get 'faviourite_post_list'
+    end
   end
   
   resources :home do

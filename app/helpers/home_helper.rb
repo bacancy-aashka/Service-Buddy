@@ -13,4 +13,13 @@ module HomeHelper
       end
       @categories.to_a
     end
+
+    def is_favourite?(provider_detail)
+     if current_user.favourite_posts.find_by(provider_detail_id: provider_detail.id)
+      return  "Remove from Favourite"
+     else
+      return "Add to Favourite"
+     end
+     
+    end
 end

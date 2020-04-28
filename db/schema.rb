@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_24_081638) do
+ActiveRecord::Schema.define(version: 2020_04_27_104906) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -58,6 +58,15 @@ ActiveRecord::Schema.define(version: 2020_04_24_081638) do
     t.index ["recipient_id", "sender_id"], name: "index_conversations_on_recipient_id_and_sender_id", unique: true
     t.index ["recipient_id"], name: "index_conversations_on_recipient_id"
     t.index ["sender_id"], name: "index_conversations_on_sender_id"
+  end
+
+  create_table "favourite_posts", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "provider_detail_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["provider_detail_id"], name: "index_favourite_posts_on_provider_detail_id"
+    t.index ["user_id"], name: "index_favourite_posts_on_user_id"
   end
 
   create_table "messages", force: :cascade do |t|

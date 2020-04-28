@@ -20,6 +20,21 @@ class UsersController < ApplicationController
     end
   end
 
+  def faviourite_post
+    post = FavouritePost.find_by(user: current_user, provider_detail_id: params[:format] )
+    if post
+      post.destroy
+      redirect_to '/'
+    else
+      FavouritePost.create(user: current_user, provider_detail_id: params[:format] )
+      redirect_to '/'
+    end
+  end
+
+  def faviourite_post_list
+    @provider_details = current_user.provider_details
+  end
+
   private
 
   def set_user
