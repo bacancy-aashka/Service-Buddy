@@ -1,4 +1,5 @@
 class AdminController < ApplicationController
+  
   before_action :authenticate_user! 
   before_action :check_user
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_admin

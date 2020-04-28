@@ -1,4 +1,3 @@
-
 <% if comment.id.present? %>
   <p>
     <strong>Reviewer :</strong>
@@ -16,7 +15,6 @@
     <%= comment.body %>
   </p>
       
-  
   <p>
     <% if like_present?(current_user.id,comment.id) %>
       <span class="btn btn-outline-primary btn-sm btn-iconed btn-rounded like-button">
@@ -36,18 +34,17 @@
                     class: 'btn btn-outline-primary btn-sm' %>
     <% end %>
   </p><hr>
+
   <script>
-    
-      $('.star-rating').raty({
-        path: '/assets/',
-        readOnly: true,
-        half: 'true',
-        score: function() {
-              return $(this).attr('data-score');
-        }
-      });
-    
-</script>
+    $('.star-rating').raty({
+      path: '/assets/',
+      readOnly: true,
+      half: 'true',
+      score: function() {
+            return $(this).attr('data-score');
+      }
+    });
+  </script>
 <% end %>
 
 

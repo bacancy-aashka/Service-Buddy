@@ -1,3 +1,8 @@
-<% messages.each do |message| %>
-  <%= render message, user: user %>
+<%= cache messages do %>
+  <% messages.each do |message| %>
+    <%= cache message do %>
+      <%= render message, user: user %>
+    <% end %>
+  <% end %>
 <% end %>
+
