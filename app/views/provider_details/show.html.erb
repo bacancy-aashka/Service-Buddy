@@ -11,7 +11,10 @@
             <%= link_to 'Edit', edit_provider_detail_path(@provider_detail), class: "btn btn-warning btn-sm" %><br>
             <%= link_to 'Delete', provider_detail_path(@provider_detail), method: :delete, class: "btn btn-danger btn-sm" %><br>
           <% else %>
-            <%= link_to "Message here", user_msg_path(@provider_detail.provider.user), remote: true , class:'btn btn-info btn-sm' %>
+            <%= link_to "Message here", user_msg_path(@provider_detail.provider.user), remote: true , class:'btn btn-info btn-sm' %><br/>
+            <%= link_to faviourite_post_users_path(@provider_detail), method: :post, remote:true, id:@provider_detail.id, class:'btn btn-info btn-sm' do %>
+                <span><%= is_favourite?(@provider_detail)%></span><i class="fa fa-heart" aria-hidden="true" style="margin-left:5px;"></i>
+              <% end %>
           <% end %>          
         </div>
       </div>

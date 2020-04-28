@@ -29,7 +29,7 @@ class UsersController < ApplicationController
       redirect_to root_path
     else
       FavouritePost.create(user: current_user, provider_detail_id: params[:format] )
-      redirect_to root_path
+      redirect_to provider_detail_path(params[:format])
     end
   end
 
