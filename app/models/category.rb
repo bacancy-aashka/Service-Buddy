@@ -1,4 +1,5 @@
 class Category < ApplicationRecord
+  
   has_many :provider_details, dependent: :destroy
   has_many :work_lists, dependent: :destroy
 

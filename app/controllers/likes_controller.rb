@@ -1,4 +1,7 @@
 class LikesController < ApplicationController
+
+  before_action :authenticate_user!
+
   def create
     @like = Like.new
     @like.comment_id = params[:comment_id]
@@ -8,8 +11,6 @@ class LikesController < ApplicationController
     else
       redirect_to provider_detail_path(params[:provider_detail_id]), notice: 'Like Failed.'
     end
-    # provider_detail_path(params[:provider_id])
-    # byebug
   end
 
   def delete

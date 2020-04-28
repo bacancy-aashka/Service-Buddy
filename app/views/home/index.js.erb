@@ -1,4 +1,5 @@
 $('#provider_detail_for_pagination').append("<%= j render 'provider_details' %>");
+
 <% if @provider_details.next_page %>
    $('.pagination').replaceWith('<%= j will_paginate(@provider_details) %>');
 <% else %>

@@ -2,9 +2,7 @@ class DailyAppointmentsMailer < ApplicationMailer
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
-  #
-  #   en.daily_appointments_mailer.mail_to_providers.subject
-  #
+  # en.daily_appointments_mailer.mail_to_providers.subject
 
   def mail_to_providers(providers)
     providers.each do |provider|
