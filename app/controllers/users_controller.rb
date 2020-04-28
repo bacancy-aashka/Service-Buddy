@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_user
 
   def show
-    @reminders = WorkList.where(provider_id: current_user.provider.id)
+    @reminders = WorkList.where(provider_id: current_user.provider.id) if current_user.provider
   end
 
   def graph
@@ -20,6 +20,21 @@ class UsersController < ApplicationController
     else
       redirect_to admin_index_path, notice: 'User failed to delete.'
     end
+  end
+
+  def faviourite_post
+    post = FavouritePost.find_by(user: current_user, provider_detail_id: params[:format] )
+    if post
+      post.destroy
+      redirect_to '/'
+    else
+      FavouritePost.create(user: current_user, provider_detail_id: params[:format] )
+      redirect_to '/'
+    end
+  end
+
+  def faviourite_post_list
+    @provider_details = current_user.provider_details
   end
 
   private

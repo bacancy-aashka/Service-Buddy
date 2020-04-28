@@ -4,6 +4,8 @@ class ProviderDetail < ApplicationRecord
   belongs_to :category
   has_many :comments, dependent: :destroy
   has_one_attached :image, dependent: :destroy
+  has_many :favourite_posts, dependent: :destroy
+  has_many :users, through: :favourite_posts
 
   # VALIDATION :
   validates :city, :state, presence: true

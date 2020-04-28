@@ -27,12 +27,14 @@
             <div class="card_side card_side--back card_side--back-3 vertical_align">
               <%= link_to "Contact", provider_detail_path(provider_detail), class:'btn btn-light btn-lg btn-center' %>
               <%= link_to "Message here", user_msg_path(provider_detail.provider.user), remote: true , class:'btn btn-light btn-lg btn-center' %>
+              <%= link_to is_favourite?(provider_detail),faviourite_post_users_path(provider_detail),method: :post, remote:true,id:provider_detail.id ,class:'btn btn-light btn-lg btn-center' %>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+
 </div>
 <script>
   $('.star-rating').raty({
