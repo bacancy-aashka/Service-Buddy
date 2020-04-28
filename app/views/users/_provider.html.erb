@@ -35,12 +35,14 @@
 <% end %>
 
 <script>
-  $('.star-rating').raty({
-    path: '/assets/',
-    readOnly: true,
-    half: 'true',
-    score: function() {
-      return $(this).attr('data-score');
-    }
+  document.addEventListener("turbolinks:load", function(){
+    $('.star-rating').raty({
+      path: '/assets/',
+      readOnly: true,
+      half: 'true',
+      score: function() {
+        return $(this).attr('data-score');
+      }
+    });
   });
 </script>

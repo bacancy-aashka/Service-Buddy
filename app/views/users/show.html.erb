@@ -70,7 +70,7 @@
                     <td><%= reminder.date %></td>
                     <td><%= reminder.description %></td>
                     <% if reminder.status %>
-                      <td><span class="badge badge-success">Completed</span></td>
+                      <td><span class="badge-success" style="padding:5px;">Completed</span></td>
                     <% else %>
                       <td><%= link_to "Done ?", reminder_status_home_index_path(reminder), method: :get, class:'btn btn-primary btn-sm' %></td>
                     <% end %>
