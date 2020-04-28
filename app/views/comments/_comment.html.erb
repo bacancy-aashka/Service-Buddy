@@ -4,8 +4,9 @@
     <%= comment.user.fullname %>
     <span style="font-size: 10px; color: midnightblue; margin-left:8px; text-decoration:none;"><i><b><%= time_ago_in_words(comment.created_at) %> ago</b></i></span>
   </p>
-  <p >
-    <div style="display: inline-block !important;"><%= comment.likes.count %> <%= 'Like'.pluralize(comment.likes.count) %></div>
+  <p>
+    
+    <div style="display: inline-block !important;"><a href="#comment-<%= comment.id %>" data-toggle="modal"><%= comment.likes.count %> <%= 'Like'.pluralize(comment.likes.count) %></a></div>
     <small style="opacity: 0.25; font-size:9px;"><i class="fa fa-circle mx-2" aria-hidden="true"></i></small>
     <div class="star-rating" data-score= <%= comment.rating %> style="display: inline-block !important;"></div>
   </p>
@@ -35,16 +36,42 @@
     <% end %>
   </p><hr>
 
-  <script>
+  <div id="comment-<%= comment.id %>" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content" >
+        <div class="modal-header">
+          <h5 class="modal-title"> Liked By</h5>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body table-wrapper-scroll-y my-custom-scrollbar">
+          <% if comment.likes.present? %>
+            <ul class="list-group">
+              <% comment.likes.each do |comment_user| %>
+                <li class="list-group-item"><%= comment_user.user.fullname %></li>
+              <% end %>
+            </ul>
+          <% else %>
+            <h2> No Likes Yet</h2>
+          <% end %>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<script>
+  document.addEventListener("turbolinks:load", function(){
     $('.star-rating').raty({
       path: '/assets/',
       readOnly: true,
       half: 'true',
       score: function() {
-            return $(this).attr('data-score');
+        return $(this).attr('data-score');
       }
     });
-  </script>
-<% end %>
-
-
+  });
+    
+</script>

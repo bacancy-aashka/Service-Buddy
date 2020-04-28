@@ -1,0 +1,21 @@
+<h1 style="font-family: 'Bangers', cursive; padding:0px 20px; letter-spacing: 2px;">Your Favourites</h1>
+<hr>
+<div class="col-7 justify-content-center">
+  <% if @provider_details.present? %>
+    <% @provider_details.each do |provider_detail| %>
+      <%= cache provider_detail do %>
+        <% unless provider_detail.provider.user == current_user %> 
+          <%= render partial: '/home/provider_detail', locals: { provider_detail: provider_detail } %>
+        <% end %>
+      <% end %>
+    <% end %> 
+    <div class="col-md-4 inbox-msg" id="msg_box">
+    </div>
+  <% else %>  
+    <div class="d-flex flex-row bd-highlight mb-3 justify-content-center ">
+      <div class="p-2 bd-highlight">
+        <h2> No Favorites Yet... </h2>
+      </div>
+    </div>
+  <% end %>
+</div>
