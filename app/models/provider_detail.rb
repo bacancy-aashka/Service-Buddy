@@ -19,11 +19,11 @@ class ProviderDetail < ApplicationRecord
   #   ProviderDetailBroadcastJob.perform_later(self)
   # }
 
-  after_update_commit {
-    if self.email_confirmed
-      ProviderDetailBroadcastJob.perform_later(self)
-    end
-  }
+  # after_update_commit {
+  #   if self.email_confirmed
+  #     ProviderDetailBroadcastJob.perform_later(self)
+  #   end
+  # }
 
   def self.set_confirmation_token(provider_detail)
     if provider_detail.confirm_token.blank?

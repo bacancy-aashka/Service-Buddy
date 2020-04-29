@@ -11,7 +11,7 @@
         <% if user_signed_in? %>
           <li>- <%= link_to "Register as a Provider Here", user_path(current_user), method: :get %></li>
           <li>- <%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
-          <li>- <%= link_to "View Garphs", user_graph_path(current_user.id) %></li>
+          <li>- <%= link_to "View Garphs", graph_user_path(current_user.id) %></li>
           <li>- <%= link_to "Favourites", faviourite_post_list_users_path%></li>
         <% else %>
           <li>- <%= link_to "Sign in", new_user_session_path %></li>
