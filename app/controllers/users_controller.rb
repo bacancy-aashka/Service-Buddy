@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :set_user, only: %i[show destroy]
-  before_action :check_user, only: %i[show]
+  before_action :set_user, only: %i[show graph destroy]
+  before_action :check_user, only: %i[show graph]
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_user
 
   def show
@@ -10,7 +10,6 @@ class UsersController < ApplicationController
   end
 
   def graph
-    @user = User.find(params[:user_id])
     @work_list_graph = WorkList.all_provider_detail_graph(params, @user)
   end
 

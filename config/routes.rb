@@ -19,9 +19,7 @@ Rails.application.routes.draw do
       post 'faviourite_post'
       get 'faviourite_post_list'
     end
-
-    get 'graph',to: "users#graph"
-
+    get 'graph', on: :member, action: :graph, as: :graph
   end
   
   resources :home do

@@ -1,6 +1,6 @@
 <hr><h3><center>Graphical Analysis</center></h3><hr>
 <% if @user.provider.work_lists.present? %>
-  <%= form_tag( user_graph_path(@user), method: :get, remote: false, class:'md-form mr-auto mb-4 ml-5') do %>
+  <%= form_tag( graph_user_path(@user), method: :get, remote: false, class:'md-form mr-auto mb-4 ml-5') do %>
     <%= text_field_tag :min_date, params[:min_date], placeholder: "Start date (dd-mm-yyyy)", class: 'start_graph form-control' %><br>
     <%= text_field_tag :max_date, params[:max_date], placeholder: "End date (dd-mm-yyyy)", class: 'end_graph form-control' %><br>
     <button class="btn btn-dark" type="submit">Search</button>
