@@ -9,7 +9,7 @@ class User < ApplicationRecord
 
   has_one_attached :image, dependent: :destroy
   has_one :provider, dependent: :destroy
-  has_many :messages
+  has_many :messages, dependent: :destroy
   has_many :conversations, foreign_key: :sender_id, dependent: :destroy
   has_many :comments, dependent: :destroy
 
