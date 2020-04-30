@@ -19,7 +19,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-6 img">
-            <%= image_tag(@user.image, class: "img-rounded") if @user.image.attached? %>
+            <%= image_tag(@user.image, class: "img-rounded", style:'width:350px;height:300px') if @user.image.attached? %>
           </div>
           <div class="col-md-6 details">
             <blockquote>
