@@ -9,12 +9,17 @@ class User < ApplicationRecord
 
   has_one_attached :image, dependent: :destroy
   has_one :provider, dependent: :destroy
-  has_many :messages, dependent: :destroy
-  has_many :conversations, foreign_key: :sender_id, dependent: :destroy
+  has_many :messages
+  has_many :conversations, foreign_key: :sender_id
   has_many :comments, dependent: :destroy
   has_many :favourite_posts, dependent: :destroy
   has_many :provider_details, through: :favourite_posts
   has_many :likes, dependent: :destroy
+
+  before_destroy {
+    conversations = Conversation.where("sender_id= ? OR recipient_id= ?", self.id, self.id)
+    conversations.destroy_all
+  }
 
   # VALIDATION :
   validates :firstname, :lastname, presence: true
