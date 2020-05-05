@@ -41,8 +41,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 
-group :development do
-  # Use sqlite3 as the database for Active Record
+group :development, :test do
   gem 'sqlite3'
 end
 
