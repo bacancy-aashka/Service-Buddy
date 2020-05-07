@@ -22,14 +22,13 @@ class UsersController < ApplicationController
   end
 
   def faviourite_post
-    post = FavouritePost.find_by(user: current_user, provider_detail_id: params[:format] )
-    if post
-      post.destroy
-      redirect_to root_path
+    post = FavouritePost.find_or_initialize_by(user: current_user, provider_detail_id: params[:format] )
+    if !post.persisted?
+      post.save
     else
-      FavouritePost.create(user: current_user, provider_detail_id: params[:format] )
-      redirect_to provider_detail_path(params[:format])
+      post.destroy
     end
+    redirect_to provider_detail_path(params[:format])
   end
 
   def faviourite_post_list

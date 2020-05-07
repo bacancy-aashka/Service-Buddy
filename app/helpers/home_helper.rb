@@ -12,10 +12,6 @@ module HomeHelper
     end
   end
 
-  def provider_detail_count
-    ProviderDetail.count
-  end
-
   def set_categories(user)
     @categories = []
     if user.provider.present?
