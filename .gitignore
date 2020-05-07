@@ -39,6 +39,5 @@ yarn-debug.log*
 /yarn.lock
 /schema.rb
 /database.yml
-Gemfile.lock
 temp.txt
 
