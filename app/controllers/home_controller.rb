@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
    
   # before_action :authenticate_user!
+  skip_before_action :verify_authenticity_token
 
   def index
     @provider_details = ProviderDetail.where(email_confirmed: true).paginate(page: params[:page], per_page: 3)
@@ -28,20 +29,14 @@ class HomeController < ApplicationController
 
   def reminder_status
     reminder = WorkList.find(params[:id])
-    if reminder.update(status: true)
-      redirect_to user_path(current_user), notice: 'Reminder\'s status is successfully updated.'
-    else
-      redirect_to user_path(current_user), notice: 'Reminder\'s status is failed to updated.'
-    end
+    reminder.update(status: true)
+    @reminders = WorkList.where(provider_id: current_user.provider.id)
   end
  
   def delete_reminder
-      reminder= WorkList.find(params[:format])
-      if reminder.destroy
-        redirect_to user_path(current_user), notice: 'Reminder is successfully deleted.' 
-      else 
-        redirect_to user_path(current_user), notice: 'Reminder is failed to delete.'
-      end
+    reminder= WorkList.find(params[:id])
+    reminder.destroy
+    @reminders = WorkList.where(provider_id: current_user.provider.id)
   end
 
   def find_provider_by_category

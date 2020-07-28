@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  
   root 'home#index'
  
   devise_for :users 
@@ -29,14 +28,14 @@ Rails.application.routes.draw do
       get 'filter_for_cities'
       post 'reminder'
       get 'reminder_status/:id', action: :reminder_status, as: :reminder_status
-      delete 'delete_reminder'
+      delete 'delete_reminder/:id', action: :delete_reminder, as: :delete_reminder
     end
   end 
 
   resources :categories
   
   resources :provider_details do
-    get ':token/confirm_email',on: :collection, action: :confirm_email, as: :confirm_email
+    get ':token/confirm_email', on: :collection, action: :confirm_email, as: :confirm_email
 
     resources :comments do
       get 'likes/create'

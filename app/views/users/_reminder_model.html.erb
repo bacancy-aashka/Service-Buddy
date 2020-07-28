@@ -1,0 +1,39 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <h5 class="modal-title"> Reminders</h5>
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+  </div>
+  <div class="modal-body">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th>For</th>
+          <th>Title</th>
+          <th>Date</th>
+          <th>Description</th>
+          <th>Status</th>
+          <th></th>
+        </tr>
+        <tbody>
+          <% reminders.each do |reminder| %>
+            <tr>
+              <td><%= reminder.category.name %></td>
+              <td><%= reminder.title %></td>
+              <td><%= reminder.date %></td>
+              <td><%= reminder.description %></td>
+              <% if reminder.status %>
+                <td><span class="badge badge-success">Completed</span></td>
+              <% else %>
+                <td><%= button_to 'Done ?', reminder_status_home_index_path(reminder), remote: true, method: :get, class: "btn btn-outline-primary btn-sm" %></td>
+              <% end %>
+              <td><%= link_to "Delete", delete_reminder_home_index_path(reminder), remote: true, method: :delete, class: 'btn btn-danger btn-sm' %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </thead>
+    </table>
+  </div>
+  <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+  </div>
+</div>
