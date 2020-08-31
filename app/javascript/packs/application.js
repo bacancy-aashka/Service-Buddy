@@ -10,8 +10,8 @@ require("@rails/activestorage").start()
 require("channels")
 require("bootstrap")
 require("jquery")   
-require ("jquery-ui")
-require ("bootstrap-datepicker")
+require("jquery-ui")
+require("bootstrap-datepicker")
 
 
 require ("select2")
