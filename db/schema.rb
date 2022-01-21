@@ -12,11 +12,14 @@
 
 ActiveRecord::Schema.define(version: 2020_04_27_104906) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
-    t.integer "record_id", null: false
-    t.integer "blob_id", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
@@ -41,8 +44,8 @@ ActiveRecord::Schema.define(version: 2020_04_27_104906) do
 
   create_table "comments", force: :cascade do |t|
     t.text "body"
-    t.integer "provider_detail_id", null: false
-    t.integer "user_id", null: false
+    t.bigint "provider_detail_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.float "rating"
@@ -61,8 +64,8 @@ ActiveRecord::Schema.define(version: 2020_04_27_104906) do
   end
 
   create_table "favourite_posts", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "provider_detail_id"
+    t.bigint "user_id"
+    t.bigint "provider_detail_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["provider_detail_id"], name: "index_favourite_posts_on_provider_detail_id"
@@ -70,8 +73,8 @@ ActiveRecord::Schema.define(version: 2020_04_27_104906) do
   end
 
   create_table "likes", force: :cascade do |t|
-    t.integer "comment_id", null: false
-    t.integer "user_id", null: false
+    t.bigint "comment_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["comment_id"], name: "index_likes_on_comment_id"
@@ -80,8 +83,8 @@ ActiveRecord::Schema.define(version: 2020_04_27_104906) do
 
   create_table "messages", force: :cascade do |t|
     t.text "body"
-    t.integer "user_id", null: false
-    t.integer "conversation_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "conversation_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "read_at"
@@ -95,8 +98,8 @@ ActiveRecord::Schema.define(version: 2020_04_27_104906) do
     t.string "zipcode"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "provider_id"
-    t.integer "category_id"
+    t.bigint "provider_id"
+    t.bigint "category_id"
     t.text "description"
     t.boolean "email_confirmed", default: false
     t.string "confirm_token"
@@ -107,7 +110,7 @@ ActiveRecord::Schema.define(version: 2020_04_27_104906) do
   create_table "providers", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id"
+    t.bigint "user_id"
     t.index ["user_id"], name: "index_providers_on_user_id"
   end
 
@@ -133,11 +136,11 @@ ActiveRecord::Schema.define(version: 2020_04_27_104906) do
     t.string "title"
     t.text "description"
     t.date "date"
-    t.integer "provider_id"
+    t.bigint "provider_id"
     t.boolean "status", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "category_id"
+    t.bigint "category_id"
     t.index ["category_id"], name: "index_work_lists_on_category_id"
     t.index ["provider_id"], name: "index_work_lists_on_provider_id"
   end

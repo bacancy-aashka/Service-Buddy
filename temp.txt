@@ -1,44 +1,7 @@
-JAVA SCRIPT :
------------------------------
-suppose A =
-
-"<div id=\"provider_detail_11\" >
-  <div class=\"container-fluid\">
-    <div class=\"row\">
-      <div class=\"col-12 mt-3\">
-        <div class=\"card\">
-          <div class=\"card-header\">
-            <b><u>Carpenter</u> :</b>
-          </div>
-          <div class=\"card-horizontal\">
-            <div class=\"img-square-wrapper\">
-              <img style=\"width:200px;height:200px\" src=\"http://example.org/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ca31fa7b8220dd38f6dacc2b492e6d51fcd064cf/imaweges.jpeg\" />
-            </div>
-            <div class=\"card-body\">
-              <p class=\"card-text\"><b>City : dsfs</b></p>
-              <p class=\"card-text\">Name : Digesh Parecha</p>
-              <p class=\"card-text\">zip-code : sfew</p>
-              <p class=\"card-text\">State : dsf</p>
-              <p class=\"card-text\">About: wefw</p>
-            </div>
-          </div>
-          <div class=\"card-footer\">
-            <a class=\"btn btn-secondary btn-sm\" href=\"/provider_details/11\">Contact</a>
-            <a class=\"btn btn-secondary btn-sm\" data-remote=\"true\" href=\"/users/2/msg\">Message here</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>  "
-
-THEN
-
-A.includes('provider_detail_11') => true
-A.find("[provider_detail_11]")
-A.find("[id='provider_detail_6']").length => 1 or 0 if not available.
-A.find("[id='" + D.firstChild.id + "']").length
-
+ruby 2.6.3
+rails 6.0.2
+nvm 10.24.1
+Bundler 1.17.3
 =========================================================================================
 cron steps => 
 
@@ -49,6 +12,23 @@ cron steps =>
 4. Display crontab: " crontab -l "
 5. To update crontab run " whenever --update-crontab "
 6. Wipe crontab of your " whenever task: bundle exec whenever --clear-crontab "
+
+CRON Commands
+
+-> cron list
+crontab -l
+
+- cron remove
+crontab -r
+
+-> Execution
+bundle exec whenever
+
+- Updation
+whenever --update-crontab
+
+-> Execution & updation
+whenever --update-crontab --set environment='development'
 
 =================================================================
 From 1st => Desc-1, Chart with js.erb not working.

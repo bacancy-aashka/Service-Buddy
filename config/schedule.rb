@@ -29,7 +29,7 @@ set :output, "#{path}/log/cron_log.log"
 #   rake 'mail:daily_appointments_mail'  
 # end
 
-every 2.hours do
+every 1.minute do
   rake 'mail:daily_appointments_mail'  
 end
 
